@@ -17,4 +17,8 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
+Route::get('/discord', [App\Http\Controllers\DiscordController::class, 'login']);
+
+Route::get('/process-oauth', [App\Http\Controllers\DiscordController::class, 'processOauth']);
+
 require __DIR__.'/auth.php';
