@@ -35,7 +35,7 @@ class DiscordController extends Controller
         $this->tokenData["code"] = $_GET['code'];
         $this->tokenData["redirect_uri"] = env("DISCORD_REDIRECT_URI");
 
-        $client = new GuzzleHttp\Client(array( 'curl' => array( CURLOPT_SSL_VERIFYPEER => false, )));
+        $client = new GuzzleHttp\Client(array('curl' => array(CURLOPT_SSL_VERIFYPEER => false,)));
 
         try {
             $accessTokenData = $client->post($this->tokenURL, ["form_params" => $this->tokenData]);
@@ -44,8 +44,8 @@ class DiscordController extends Controller
             abort(400, "Bad request");
         };
 
-        $access_token = $accessTokenData -> access_token;
-        $header = array("Authorization: Bearer $access_token", "Content-Type: application/x-www-form-urlencoded");
+        $authToken = $accessTokenData->access_token;
+        $header = array("Authorization: Bearer $authToken", "Content-Type: application/x-www-form-urlencoded");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
@@ -56,10 +56,39 @@ class DiscordController extends Controller
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 
+        $userData = curl_exec($ch);
+
+        $userData = json_decode($userData, true);
+
+        $this->addUserToGuild($userData['id'], $authToken, env('DISCORD_GUILD_ID'));
+
+        return $userData;
+    }
+
+    public function addUserToGuild($discord_ID, $token, $guild_ID)
+    {
+        $payload = [
+            'access_token' => $token,
+        ];
+
+        $discord_api_url = 'https://discordapp.com/api/guilds/' . $guild_ID . '/members/' . $discord_ID;
+
+        $bot_token = env('DISCORD_BOT_ID');
+        $header = array("Authorization: Bot $bot_token", "Content-Type: application/json");
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_URL, $discord_api_url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
         $result = curl_exec($ch);
 
-        $result = json_decode($result, true);
-
-        return $result;
+        if (!$result) {
+            abort(400, "Bad request");
+        }
     }
 }
