@@ -2,21 +2,22 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Topic;
+use App\Models\Lesson;
+use App\Models\Task;
+use App\Models\UserProgress;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $user = User::updateOrCreate([
+                'email' => 'user@example.com',
+                'name' => 'user',
+                'password' => '$2y$10$sle.82qcGEFdsHuS86sQC.gjgyVG.iFhTnuuC6X2KD4IJI367Jhfm',
+            ]
+        );
     }
 }
