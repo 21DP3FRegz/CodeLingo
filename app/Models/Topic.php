@@ -9,14 +9,15 @@ class Topic extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-    ];
-
     public $timestamps = false;
 
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function user_progress()
+    {
+        return $this->hasMany(userProgress::class);
     }
 }

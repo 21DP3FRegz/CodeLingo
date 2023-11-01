@@ -9,14 +9,8 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'topic_id',
-        'title',
-        'order'
-    ];
-
     public $timestamps = false;
-    
+
     public function topic()
     {
         return $this->belongsTo(Topic::class);
@@ -25,5 +19,10 @@ class Lesson extends Model
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    public function user_progress()
+    {
+        return $this->hasMany(userProgress::class);
     }
 }

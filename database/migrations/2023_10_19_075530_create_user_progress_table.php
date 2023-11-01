@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('user_progress', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('lesson_id');
-            $table->unsignedBigInteger('task_id');
-            $table->string('status'); // 'completed', 'incomplete', 'unbegun'
+            $table->unsignedBigInteger('topic_id');
+            $table->unsignedBigInteger('last_completed_lesson');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('lesson_id')->references('id')->on('lessons');
-            $table->foreign('task_id')->references('id')->on('tasks');
+            $table->foreign('topic_id')->references('id')->on('topics');
+            $table->foreign('last_completed_lesson')->references('id')->on('lessons');
         });
     }
 

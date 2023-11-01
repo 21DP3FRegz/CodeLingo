@@ -9,27 +9,19 @@ class UserProgress extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'lesson_id',
-        'task_id',
-        'status',
-    ];
-
     public $timestamps = false;
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);
-    }
-    
-    public function task()
-    {
-        return $this->belongsTo(Task::class);
     }
 }

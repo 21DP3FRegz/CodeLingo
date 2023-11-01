@@ -2,20 +2,26 @@
 
 namespace Database\Factories;
 
-use App\Models\Task;
-use App\Models\Lesson;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Task;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
+ */
 class TaskFactory extends Factory
 {
-    protected $model = Task::class;
-
     public function definition(): array
     {
         return [
-            'lesson_id' => Lesson::factory(),
-            'title' => $this->faker->sentence,
-            'content' => $this->faker->sentence,
+            'content' => fake()->sentence,
+            'answer' => fake()->word,
         ];
+    }
+
+    public function forLesson($lesson)
+    {
+        return $this->state([
+            'lesson_id' => $lesson->id,
+        ]);
     }
 }
