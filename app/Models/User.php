@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path',
     ];
 
     /**
@@ -42,8 +43,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function user_progress()
+    public function courses()
     {
-        return $this->hasMany(UserProgress::class);
+        return $this->hasMany(UserCourse::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(CommunityQuestion::class);
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(CommunityAnswer::class);
     }
 }

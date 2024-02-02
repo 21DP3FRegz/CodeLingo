@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('profile_photo_path')->nullable();
+            $table->enum('role', ['student', 'mentor', 'admin'])->default('student');
         });
     }
 

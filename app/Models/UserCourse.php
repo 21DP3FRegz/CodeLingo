@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserProgress extends Model
+class UserCourse extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    protected $fillable = [
+        'user_id', 'course_id', 'progress', 'completion_status',
+    ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function topic()
+    public function course()
     {
-        return $this->belongsTo(Topic::class);
-    }
-    public function lesson()
-    {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(Course::class);
     }
 }
