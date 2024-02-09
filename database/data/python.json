@@ -1,0 +1,18 @@
+{
+    "course_name": "Python",
+    "description": "An introductory course to Python programming.",
+    "language": "English",
+    "lessons": [
+        {
+            "title": "Introduction to Python",
+            "content": "Python is a high-level, interpreted programming language with easy-to-read syntax...",
+            "tests": [
+                {
+                    "question": "Which company created Python?",
+                    "options": ["Microsoft", "Apple", "Google", "Python Software Foundation"],
+                    "correct_answer": 3
+                }
+            ]
+        }
+    ]
+}
