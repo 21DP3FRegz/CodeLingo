@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -12,9 +13,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function (Request $request) {
+    $user = $request->user();
+    $userCourses = $user->courses()->with('course')->get();
+
     return Inertia::render('Dashboard', [
-        'haveStared' => FALSE
+        'userCourses' => $userCourses
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

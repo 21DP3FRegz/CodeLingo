@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 
+use App\Models\UserCourse;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Course;
@@ -43,5 +44,12 @@ class ContentSeeder extends Seeder
                 }
             }
         }
+
+        UserCourse::create([
+            'user_id' => 2,
+            'course_id' => 1,
+            'progress' => 0,
+            'completion_status' => 0,
+        ]);
     }
 }
