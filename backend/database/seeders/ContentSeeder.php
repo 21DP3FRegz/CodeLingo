@@ -37,7 +37,7 @@ class ContentSeeder extends Seeder
                     Test::create([
                         'lesson_id' => $lesson->id,
                         'question' => $testData['question'],
-                        'options' => json_encode($testData['options']),
+                        'options' => $testData['options'],
                         'correct_answer' => $testData['correct_answer'],
                     ]);
                 }

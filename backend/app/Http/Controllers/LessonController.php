@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class LessonController extends Controller
 {
@@ -21,7 +22,14 @@ class LessonController extends Controller
     {
         $validatedData = $request->validate([
             'course_id' => 'required|exists:courses,id',
-            'title' => 'required|string|max:255',
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('lessons')->where(function ($query) use ($request) {
+                    return $query->where('course_id', $request->course_id);
+                }),
+            ],
             'content' => 'required|string',
         ]);
 

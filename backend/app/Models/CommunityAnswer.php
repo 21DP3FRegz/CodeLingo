@@ -15,11 +15,11 @@ class CommunityAnswer extends Model
 
     public function question()
     {
-        return $this->belongsTo(CommunityQuestion::class);
+        return $this->belongsTo(CommunityQuestion::class, 'question_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

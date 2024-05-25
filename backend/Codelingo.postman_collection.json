@@ -1,0 +1,1136 @@
+{
+	"info": {
+		"_postman_id": "1ee0c2bf-2589-4a0b-ae08-6108a76b05e1",
+		"name": "Codelingo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27650833"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "registration",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"johndoe@example.com\",\r\n  \"password\": \"password\",\r\n  \"password_confirmation\": \"password\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"acess_token\", jsonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"johndoe@example.com\",\r\n  \"password\": \"password\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "courses",
+			"item": [
+				{
+					"name": "get all courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/courses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/courses/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"course_name\": \"Example Course\",\r\n  \"description\": \"This is an example course.\",\r\n  \"language\": \"English\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/courses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"course_name\": \"Updated Course Name\",\r\n  \"description\": \"Updated description.\",\r\n  \"language\": \"Russian\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/courses/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/courses/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"courses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lessons",
+			"item": [
+				{
+					"name": "get all lessons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/lessons",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get lesson",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/lessons/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create lesson",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"course_id\": 1,\r\n  \"title\": \"Second Lesson\",\r\n  \"content\": \"Lesson content here\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/lessons",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update lesson",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Updated Lesson Title\",\r\n  \"content\": \"Updated content here\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/lessons/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete lesson",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/lessons/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"lessons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tests",
+			"item": [
+				{
+					"name": "get all tests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tests",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tests/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tests",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create test",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lesson_id\": 1,\r\n  \"question\": \"New Test Question\",\r\n  \"options\": [\"Option 1\", \"Option 2\", \"Option 3\", \"Option 4\"],\r\n  \"correct_answer\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tests",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update test",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\": \"Updated Test Question\",\r\n  \"options\": [\"Updated Option 1\", \"Updated Option 2\", \"Updated Option 3\", \"Updated Option 4\"],\r\n  \"correct_answer\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tests/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tests",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete test",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tests/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tests",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-course",
+			"item": [
+				{
+					"name": "get all user courses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user_courses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user course",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user_courses/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_courses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"course_id\": 1,\r\n  \"progress\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user_courses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"progress\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/user_courses/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_courses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user course",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/user_courses/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user_courses",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "middleware('auth:sanctum')"
+		},
+		{
+			"name": "questions",
+			"item": [
+				{
+					"name": "get all questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/questions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get question",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/questions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"course_id\": 1,\r\n  \"content\": \"How can I improve my coding skills?\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/questions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update question",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"Updated content of the community question\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/questions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete question",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/questions/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"questions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "middleware('auth:sanctum')"
+		},
+		{
+			"name": "answers",
+			"item": [
+				{
+					"name": "get all answers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/answers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"answers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get answers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/answers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"answers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create answer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question_id\": 1,\r\n  \"content\": \"This is an answer to the community question.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/answers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"answers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update answer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"Updated answer to the community question.\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/answers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"answers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete answer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{acess_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/answers/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"answers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "middleware('auth:sanctum')"
+		},
+		{
+			"name": "welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "xsrf-cookie",
+			"value": ""
+		}
+	]
+}

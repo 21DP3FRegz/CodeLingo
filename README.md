@@ -76,5 +76,19 @@ cd CodeLingo
     php artisan serve
     ```
 
+### Testing the Backend with Postman
+
+You can test the backend API using Postman. We've provided environment files to simplify this process:
+
+1. Open Postman.
+
+2. Import the environment files:
+   - `backend/Auth.postman_environment.json`
+   - `backend/Codelingo.postman_environment.json`
+
+3. Select the appropriate environment in Postman to configure your requests correctly.
+
+4. Use the pre-configured requests in Postman or create new ones to interact with the backend API.
+
 ## Contact
 If you have any questions or suggestions, you can contact me via email: [felikss.regzdins@gmail.com].
