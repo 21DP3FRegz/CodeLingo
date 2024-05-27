@@ -43,6 +43,23 @@ class AuthController extends Controller
         }
     }
 
+    public function update(Request $request)
+    {
+        $user = $request->user();
+
+        $validatedData = $request->validate([
+            'name' => 'sometimes|string|max:255',
+        ]);
+
+        if (isset($validatedData['name'])) {
+            $user->name = $validatedData['name'];
+        }
+
+        $user->save();
+
+        return $user;
+    }
+
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

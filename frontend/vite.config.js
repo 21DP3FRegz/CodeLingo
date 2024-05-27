@@ -12,5 +12,12 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    sourcemap: true, // Включает генерацию source maps
+  },
+  server: {
+    sourcemap: true, // Включает генерацию source maps для разработки
   }
 })
+

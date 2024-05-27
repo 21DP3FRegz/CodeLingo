@@ -1,8 +1,9 @@
 <script setup>
+import CourseList from "@/components/CourseList.vue";
 </script>
 
 <template>
   <main>
-    123
+    <CourseList/>
   </main>
 </template>
