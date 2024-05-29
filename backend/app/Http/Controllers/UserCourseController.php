@@ -58,19 +58,17 @@ class UserCourseController extends Controller
         $userCourse = UserCourse::where('user_id', Auth::id())->findOrFail($id);
 
         $validatedData = $request->validate([
-            'progress' => 'numeric|min:0',
+            'progress' => 'required|numeric|min:0',
         ]);
 
-        if (isset($validatedData['progress'])) {
-            $course = Course::with('lessons')->findOrFail($userCourse->course_id);
-            $maxLessonOrder = $course->lessons->max('lesson_order');
+        $course = Course::with('lessons')->findOrFail($userCourse->course_id);
+        $maxLessonOrder = $course->lessons->max('lesson_order');
 
-            if ($validatedData['progress'] > $maxLessonOrder) {
-                return response()->json(['error' => 'Progress exceeds maximum lesson order'], 400);
-            }
-            
-            $validatedData['completion_status'] = $validatedData['progress'] == $maxLessonOrder;
+        if ($validatedData['progress'] > $maxLessonOrder) {
+            return response()->json(['error' => 'Progress exceeds maximum lesson order'], 400);
         }
+
+        $validatedData['completion_status'] = $validatedData['progress'] == $maxLessonOrder;
 
         $userCourse->update($validatedData);
 

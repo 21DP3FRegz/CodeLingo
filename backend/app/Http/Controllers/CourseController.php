@@ -14,7 +14,7 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        return Course::find($id);
+        return Course::with('lessons')->findOrFail($id);
     }
 
     public function store(Request $request)

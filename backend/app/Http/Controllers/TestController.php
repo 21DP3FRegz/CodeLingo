@@ -8,9 +8,17 @@ use Illuminate\Validation\Rule;
 
 class TestController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Test::all();
+        $lesson_id = $request->query('lesson_id');
+
+        if ($lesson_id) {
+            $tests = Test::where('lesson_id', $lesson_id)->get();
+        } else {
+            $tests = Test::all();
+        }
+
+        return $tests;
     }
 
     public function show($id)
