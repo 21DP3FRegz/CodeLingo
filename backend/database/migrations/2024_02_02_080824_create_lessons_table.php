@@ -18,9 +18,9 @@ return new class extends Migration
 
             $table->string('title');
             $table->text('content');
-            $table->unsignedInteger('lesson_order');
+            $table->unsignedInteger('order');
             $table->timestamps();
-            
+
         });
     }
 

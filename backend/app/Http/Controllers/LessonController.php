@@ -33,11 +33,9 @@ class LessonController extends Controller
             'content' => 'required|string',
         ]);
 
-        // Получаем количество уроков для данного курса
         $lessonCount = Lesson::where('course_id', $validatedData['course_id'])->count();
 
-        // Вычисляем порядковый номер нового урока
-        $validatedData['lesson_order'] = $lessonCount + 1;
+        $validatedData['order'] = $lessonCount + 1;
 
         return Lesson::create($validatedData);
     }
@@ -50,7 +48,7 @@ class LessonController extends Controller
             'course_id' => 'exists:courses,id',
             'title' => 'string|max:255',
             'content' => 'string',
-            'lesson_order' => 'integer',
+            'order' => 'integer',
         ]);
 
         $lesson->update($validatedData);

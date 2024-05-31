@@ -30,7 +30,7 @@ class ContentSeeder extends Seeder
                     'course_id' => $course->id,
                     'title' => $lessonData['title'],
                     'content' => $lessonData['content'],
-                    'lesson_order' => $index + 1,
+                    'order' => $index + 1,
                 ]);
 
                 foreach ($lessonData['tests'] as $testData) {

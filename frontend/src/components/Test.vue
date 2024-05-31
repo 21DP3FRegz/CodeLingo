@@ -40,19 +40,26 @@ export default {
         }, 0);
 
         const score = correctAnswers / this.tests.length;
+        console.log(score, this.tests.length)
 
-        // Обновление прогресса пользователя
-        const token = localStorage.getItem('token');
-        await api.put(`/user_courses/${this.lessonId}`, {
-          progress: this.lessonId + 1,
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        if (score === 1)
+        {
+          const token = localStorage.getItem('token');
+          const userCourseId = localStorage.getItem('userCourseId');
+          await api.put(`/user_courses/${userCourseId}`, {
+            progress: this.lessonId,
+          }, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          this.$router.push(`/courses/${this.lessonId}`);
+        } else {
+          console.log('lose')
+          this.$router.push(`/courses/${this.lessonId}`);
+        }
 
-        alert(`Answers submitted successfully! Your score: ${score * 100}%`);
-        this.$router.push(`/courses/${this.lessonId}`);
+
       } catch (error) {
         console.error('Failed to submit answers:', error);
       }

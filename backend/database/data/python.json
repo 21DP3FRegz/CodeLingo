@@ -1,16 +1,446 @@
 {
-    "course_name": "Python",
+    "course_name": "Python for Beginners",
     "description": "An introductory course to Python programming.",
     "language": "English",
     "lessons": [
         {
             "title": "Introduction to Python",
-            "content": "Python is a high-level, interpreted programming language with easy-to-read syntax...",
+            "content": "Python is a high-level, interpreted programming language with easy-to-read syntax. It was created by Guido van Rossum and first released in 1991. Python is known for its readability and versatility, making it a popular choice for beginners and experienced developers alike.",
             "tests": [
                 {
-                    "question": "Which company created Python?",
-                    "options": ["Microsoft", "Apple", "Google", "Python Software Foundation"],
+                    "question": "Who created Python?",
+                    "options": ["Guido van Rossum", "Elon Musk", "Bill Gates", "Mark Zuckerberg"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "When was Python first released?",
+                    "options": ["1989", "1991", "2000", "2005"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What type of language is Python?",
+                    "options": ["Compiled", "Interpreted", "Assembly", "Machine"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Setting Up Python",
+            "content": "To start programming in Python, you need to install Python on your computer. Visit the official Python website (python.org) and download the installer for your operating system. Follow the installation instructions, and ensure you add Python to your system's PATH.",
+            "tests": [
+                {
+                    "question": "Where can you download Python?",
+                    "options": ["python.org", "github.com", "microsoft.com", "apple.com"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What should you add to your system's PATH?",
+                    "options": ["Python interpreter", "IDLE", "PIP", "Documentation"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the command to check Python version in the terminal?",
+                    "options": ["python --version", "py --ver", "check python", "version python"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Variables and Data Types",
+            "content": "Variables are used to store data in Python. Data types define the kind of value a variable can hold. Python has several built-in data types including integers, floats, strings, and booleans.",
+            "tests": [
+                {
+                    "question": "Which of these is a valid variable name?",
+                    "options": ["1variable", "variable1", "var-iable", "variable!"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which data type is used to represent text?",
+                    "options": ["int", "float", "str", "bool"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "What value does a boolean data type represent?",
+                    "options": ["Text", "Decimal", "True/False", "Character"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Basic Operators",
+            "content": "Operators are used to perform operations on variables and values. Python supports various operators such as arithmetic operators (+, -, *, /), comparison operators (==, !=, >, <), and logical operators (and, or, not).",
+            "tests": [
+                {
+                    "question": "What does the '+' operator do?",
+                    "options": ["Subtracts", "Multiplies", "Adds", "Divides"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "Which operator is used for comparison?",
+                    "options": ["=", "==", "+", "&&"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is the result of 'True and False'?",
+                    "options": ["True", "False", "Error", "None"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Control Structures",
+            "content": "Control structures in Python include conditional statements (if, elif, else) and loops (for, while). These structures control the flow of execution based on conditions.",
+            "tests": [
+                {
+                    "question": "What does the 'if' statement do?",
+                    "options": ["Loops code", "Checks condition", "Defines function", "Imports module"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which keyword is used to start a loop?",
+                    "options": ["if", "while", "for", "elif"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "What is the purpose of the 'else' clause?",
+                    "options": ["Defines function", "Executes when condition is false", "Starts loop", "Imports module"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Functions",
+            "content": "Functions are blocks of code that perform a specific task. They are defined using the 'def' keyword, followed by the function name and parentheses. Functions help in organizing and reusing code.",
+            "tests": [
+                {
+                    "question": "How do you define a function in Python?",
+                    "options": ["def functionName():", "function functionName():", "def functionName[]:", "function functionName[]:"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is used to call a function?",
+                    "options": ["def", "call", "()", "run"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "What does a function return if no return statement is used?",
+                    "options": ["0", "None", "Error", "Empty string"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Lists",
+            "content": "Lists are ordered collections of items in Python. They are defined using square brackets and can contain elements of different data types. Lists are mutable, meaning their elements can be changed.",
+            "tests": [
+                {
+                    "question": "How do you define a list in Python?",
+                    "options": ["{}", "[]", "()", "<>"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Can a list contain elements of different data types?",
+                    "options": ["Yes", "No"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which method is used to add an element to a list?",
+                    "options": ["add()", "append()", "insert()", "push()"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Dictionaries",
+            "content": "Dictionaries are collections of key-value pairs. They are defined using curly braces and allow for fast retrieval of data. Keys in a dictionary must be unique and immutable.",
+            "tests": [
+                {
+                    "question": "How do you define a dictionary in Python?",
+                    "options": ["{}", "[]", "()", "<>"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Can dictionary keys be duplicated?",
+                    "options": ["Yes", "No"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which method is used to get a value from a dictionary?",
+                    "options": ["get()", "find()", "fetch()", "retrieve()"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Tuples",
+            "content": "Tuples are similar to lists, but they are immutable, meaning their elements cannot be changed after creation. Tuples are defined using parentheses.",
+            "tests": [
+                {
+                    "question": "How do you define a tuple in Python?",
+                    "options": ["{}", "[]", "()", "<>"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "Are tuples mutable?",
+                    "options": ["Yes", "No"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which method is used to count the occurrences of an element in a tuple?",
+                    "options": ["count()", "index()", "find()", "occur()"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Strings",
+            "content": "Strings are sequences of characters enclosed in quotes. Python supports single, double, and triple quotes for string definition. Strings are immutable.",
+            "tests": [
+                {
+                    "question": "Which of the following is a valid string?",
+                    "options": ["'Hello'", "\"Hello\"", "'''Hello'''", "All of the above"],
                     "correct_answer": 3
+                },
+                {
+                    "question": "Are strings mutable in Python?",
+                    "options": ["Yes", "No"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which method is used to convert a string to lowercase?",
+                    "options": ["lower()", "down()", "convert()", "small()"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "File I/O",
+            "content": "File I/O (Input/Output) refers to reading from and writing to files. Python provides built-in functions such as open(), read(), write(), and close() to handle file operations.",
+            "tests": [
+                {
+                    "question": "Which function is used to open a file?",
+                    "options": ["open()", "read()", "write()", "file()"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the default mode for opening a file?",
+                    "options": ["r", "w", "a", "x"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which method is used to close a file?",
+                    "options": ["end()", "stop()", "close()", "exit()"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Modules and Packages",
+            "content": "Modules are files containing Python code that can be imported and reused in other programs. Packages are collections of modules. Use the 'import' statement to include modules in your code.",
+            "tests": [
+                {
+                    "question": "How do you import a module in Python?",
+                    "options": ["load module", "import module", "use module", "require module"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is a package?",
+                    "options": ["A single module", "A collection of modules", "A function", "A variable"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which keyword is used to import specific functions from a module?",
+                    "options": ["get", "select", "from", "use"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Error Handling",
+            "content": "Error handling in Python is done using try, except, else, and finally blocks. This helps in managing and responding to exceptions that occur during program execution.",
+            "tests": [
+                {
+                    "question": "Which keyword is used to handle exceptions?",
+                    "options": ["try", "catch", "except", "finally"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "What does the 'finally' block do?",
+                    "options": ["Runs only if no exception", "Runs only if there is an exception", "Runs regardless of exceptions", "Never runs"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "Which block is used to execute code if no exceptions occur?",
+                    "options": ["try", "except", "else", "finally"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Object-Oriented Programming",
+            "content": "Object-Oriented Programming (OOP) is a paradigm that uses objects and classes. Python supports OOP features like inheritance, polymorphism, and encapsulation.",
+            "tests": [
+                {
+                    "question": "What is a class?",
+                    "options": ["A function", "A blueprint for objects", "A variable", "A module"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is an object?",
+                    "options": ["A function", "An instance of a class", "A variable", "A module"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which keyword is used to define a class?",
+                    "options": ["def", "class", "object", "type"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Inheritance",
+            "content": "Inheritance is an OOP feature that allows a class to inherit attributes and methods from another class. The inherited class is called a subclass, and the class it inherits from is called a superclass.",
+            "tests": [
+                {
+                    "question": "Which keyword is used for inheritance?",
+                    "options": ["inherits", "extends", "super", "class"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is a subclass?",
+                    "options": ["A function", "A class that inherits from another class", "A variable", "A module"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Can a subclass override methods of its superclass?",
+                    "options": ["Yes", "No"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Polymorphism",
+            "content": "Polymorphism is an OOP concept where a function or method can take many forms. It allows different classes to be treated as instances of the same class through inheritance.",
+            "tests": [
+                {
+                    "question": "What is polymorphism?",
+                    "options": ["Multiple inheritance", "Method overloading", "Ability to take many forms", "Encapsulation"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "Can polymorphism be achieved through inheritance?",
+                    "options": ["Yes", "No"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is method overloading?",
+                    "options": ["Multiple methods with the same name but different parameters", "Inheritance", "Encapsulation", "Abstraction"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Encapsulation",
+            "content": "Encapsulation is an OOP concept that restricts direct access to some of an object's components. It can be achieved using private and protected access modifiers.",
+            "tests": [
+                {
+                    "question": "What is encapsulation?",
+                    "options": ["Hiding the internal state of an object", "Inheriting from multiple classes", "Overloading methods", "Creating objects"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which keyword is used to indicate a private attribute?",
+                    "options": ["_", "__", "private", "protected"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is the purpose of encapsulation?",
+                    "options": ["Code reusability", "Data hiding", "Method overloading", "Multiple inheritance"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Standard Library",
+            "content": "Python's standard library is a collection of modules and packages that provide various functionalities like file I/O, system calls, web services, and data serialization.",
+            "tests": [
+                {
+                    "question": "What is the Python standard library?",
+                    "options": ["A collection of built-in modules and packages", "A list of functions", "A set of classes", "An IDE"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which module is used for working with dates and times?",
+                    "options": ["datetime", "time", "calendar", "date"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which module is used for JSON serialization?",
+                    "options": ["pickle", "json", "marshal", "xml"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Web Development with Flask",
+            "content": "Flask is a lightweight web framework for Python. It allows you to build web applications quickly and easily. Flask is designed to be simple and flexible.",
+            "tests": [
+                {
+                    "question": "What is Flask?",
+                    "options": ["A web framework", "A database", "A library", "An IDE"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which command is used to install Flask?",
+                    "options": ["pip install flask", "install flask", "flask install", "setup flask"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the purpose of the 'app.route' decorator?",
+                    "options": ["Define a URL route", "Connect to a database", "Create a template", "Start the server"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Working with APIs",
+            "content": "APIs (Application Programming Interfaces) allow different software systems to communicate. Python provides libraries like requests to interact with APIs for web services, data retrieval, and more.",
+            "tests": [
+                {
+                    "question": "What is an API?",
+                    "options": ["A database", "A library", "A set of rules for communication", "An IDE"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "Which library is commonly used to interact with APIs in Python?",
+                    "options": ["requests", "api", "http", "flask"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What does the 'requests.get()' function do?",
+                    "options": ["Send a GET request", "Send a POST request", "Send a PUT request", "Send a DELETE request"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Data Analysis with Pandas",
+            "content": "Pandas is a powerful library for data analysis in Python. It provides data structures like Series and DataFrame to manipulate and analyze data efficiently.",
+            "tests": [
+                {
+                    "question": "What is Pandas?",
+                    "options": ["A data analysis library", "A web framework", "A database", "An IDE"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which data structure does Pandas provide for 2D data?",
+                    "options": ["Series", "DataFrame", "List", "Dictionary"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which function is used to read a CSV file in Pandas?",
+                    "options": ["read_csv()", "load_csv()", "open_csv()", "import_csv()"],
+                    "correct_answer": 0
                 }
             ]
         }

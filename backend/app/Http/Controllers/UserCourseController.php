@@ -10,9 +10,19 @@ use Illuminate\Validation\Rule;
 
 class UserCourseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return UserCourse::where('user_id', Auth::id())->get();
+        $course_id = $request->query('course_id');
+
+        if ($course_id) {
+            $userCourse = UserCourse::where('user_id', Auth::id())
+                ->where('course_id', $course_id)
+                ->first();
+        } else {
+            $userCourse = UserCourse::where('user_id', Auth::id())->get();
+        }
+
+        return response()->json($userCourse);
     }
 
     public function show($id)
@@ -35,7 +45,7 @@ class UserCourseController extends Controller
         ]);
 
         $course = Course::with('lessons')->findOrFail($validatedData['course_id']);
-        $maxLessonOrder = $course->lessons->max('lesson_order');
+        $maxLessonOrder = $course->lessons->max('order');
 
         if ($validatedData['progress'] > $maxLessonOrder) {
             return response()->json(['error' => 'Progress exceeds maximum lesson order'], 400);
@@ -62,7 +72,7 @@ class UserCourseController extends Controller
         ]);
 
         $course = Course::with('lessons')->findOrFail($userCourse->course_id);
-        $maxLessonOrder = $course->lessons->max('lesson_order');
+        $maxLessonOrder = $course->lessons->max('order');
 
         if ($validatedData['progress'] > $maxLessonOrder) {
             return response()->json(['error' => 'Progress exceeds maximum lesson order'], 400);

@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       course: null,
-      currentLessonId: null, // ID текущего урока
+      currentLessonId: null,
       progress: 0, // Прогресс пользователя в курсе
     };
   },
@@ -31,13 +31,14 @@ export default {
     async fetchUserProgress() {
       try {
         const token = localStorage.getItem('token');
-        const response = await api.get(`/user_courses/${this.id}`, {
+        const response = await api.get(`/user_courses?course_id=${this.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         const userCourse = response.data;
         this.progress = userCourse.progress;
+        localStorage.setItem('userCourseId', userCourse.id);
         this.setCurrentLesson();
       } catch (error) {
         console.error('Failed to fetch user progress:', error);
@@ -48,10 +49,12 @@ export default {
       this.currentLessonId = currentLesson ? currentLesson.id : null;
     },
     isLessonAccessible(order) {
-      return order <= this.progress;
+      return order <= this.progress + 1; // Доступен только текущий и предыдущие уроки
     },
     viewLesson(lessonId) {
-      this.$router.push(`/lessons/${lessonId}`);
+      if (this.isLessonAccessible(this.course.lessons.find(lesson => lesson.id === lessonId).order)) {
+        this.$router.push(`/lessons/${lessonId}`);
+      }
     },
     goBack() {
       this.$router.push('/');
@@ -67,9 +70,16 @@ export default {
     <h3>Lessons</h3>
     <ul>
       <li v-for="lesson in course.lessons" :key="lesson.id">
-        <h4 :class="{ current: lesson.id === currentLessonId }">{{ lesson.title }}</h4>
-        <button @click="viewLesson(lesson.id)" :disabled="!isLessonAccessible(lesson.order)-1">
-          {{ lesson.id === currentLessonId ? 'Continue' : 'Start' }}
+        <button
+            @click="viewLesson(lesson.id)"
+            :disabled="!isLessonAccessible(lesson.order)"
+            :class="{
+            current: lesson.id === currentLessonId,
+            accessible: isLessonAccessible(lesson.order),
+            inaccessible: !isLessonAccessible(lesson.order)
+          }"
+        >
+          {{ lesson.title }}
         </button>
       </li>
     </ul>
@@ -78,5 +88,17 @@ export default {
 </template>
 
 <style scoped>
+.current {
+  font-weight: bold;
+  color: green;
+}
 
+.accessible {
+  background-color: #e0ffe0; /* Светло-зеленый фон для доступных уроков */
+}
+
+.inaccessible {
+  background-color: #ffe0e0; /* Светло-красный фон для недоступных уроков */
+  cursor: not-allowed; /* Курсор в виде запрета для недоступных уроков */
+}
 </style>
