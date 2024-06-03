@@ -5,6 +5,8 @@ import LoginView from '../views/LoginView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import Course from '../components/Course.vue'
 import Lesson from '../components/Lesson.vue'
+import CommunityQuestionList from '../components/CommunityChat.vue';
+import CommunityQuestionDetail from '../components/CommunityQuestion.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

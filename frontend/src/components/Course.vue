@@ -1,7 +1,36 @@
+<template>
+  <div>
+    <h2>{{ course.course_name }}</h2>
+    <p>{{ course.description }}</p>
+    <h3>Lessons</h3>
+    <ul>
+      <li v-for="lesson in course.lessons" :key="lesson.id">
+        <button
+            @click="viewLesson(lesson.id)"
+            :disabled="!isLessonAccessible(lesson.order)"
+            :class="{
+            current: lesson.id === currentLessonId,
+            accessible: isLessonAccessible(lesson.order),
+            inaccessible: !isLessonAccessible(lesson.order)
+          }"
+        >
+          {{ lesson.title }}
+        </button>
+      </li>
+    </ul>
+    <community-chat :course-id="course.id"></community-chat>
+    <button @click="goBack">Back to Courses</button>
+  </div>
+</template>
+
 <script>
 import api from '@/api.js';
+import CommunityChat from './CommunityChat.vue';
 
 export default {
+  components: {
+    CommunityChat
+  },
   props: {
     id: {
       type: Number,
@@ -49,7 +78,7 @@ export default {
       this.currentLessonId = currentLesson ? currentLesson.id : null;
     },
     isLessonAccessible(order) {
-      return order <= this.progress + 1; // Доступен только текущий и предыдущие уроки
+      return order <= this.progress + 1;
     },
     viewLesson(lessonId) {
       if (this.isLessonAccessible(this.course.lessons.find(lesson => lesson.id === lessonId).order)) {
@@ -62,30 +91,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div>
-    <h2>{{ course.course_name }}</h2>
-    <p>{{ course.description }}</p>
-    <h3>Lessons</h3>
-    <ul>
-      <li v-for="lesson in course.lessons" :key="lesson.id">
-        <button
-            @click="viewLesson(lesson.id)"
-            :disabled="!isLessonAccessible(lesson.order)"
-            :class="{
-            current: lesson.id === currentLessonId,
-            accessible: isLessonAccessible(lesson.order),
-            inaccessible: !isLessonAccessible(lesson.order)
-          }"
-        >
-          {{ lesson.title }}
-        </button>
-      </li>
-    </ul>
-    <button @click="goBack">Back to Courses</button>
-  </div>
-</template>
 
 <style scoped>
 .current {

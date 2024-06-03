@@ -46,7 +46,7 @@ cd CodeLingo
 
 1. Navigate to the `backend` folder:
     ```bash
-    cd ../backend
+    cd backend
     ```
 
 2. Install the dependencies:

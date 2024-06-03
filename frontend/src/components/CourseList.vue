@@ -52,7 +52,7 @@ export default {
           },
         });
         alert('Course started successfully!');
-        await this.fetchUserCourses(); // обновить список курсов пользователя
+        await this.fetchUserCourses();
       } catch (error) {
         if (error.response && error.response.status === 401) {
           this.showAuthPrompt = true;
@@ -78,7 +78,7 @@ export default {
       <li v-for="course in courses" :key="course.id">
         <h3>{{ course.course_name }}</h3>
         <p>{{ course.description }}</p>
-        <button v-if="!isCourseStarted(course.id)" @click="startCourse(course)">Start Course</button>
+        <Button v-if="!isCourseStarted(course.id)" @click="startCourse(course)" label="Start Course" />
         <button v-else @click="viewCourse(course.id)">View Course</button>
       </li>
     </ul>

@@ -9,9 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class CommunityQuestionController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return CommunityQuestion::with('user', 'course')->get();
+        $course_id = $request->query('course_id');
+
+        if ($course_id) {
+            $questions = CommunityQuestion::with('user', 'course')
+                ->where('course_id', $course_id)
+                ->get();
+        } else {
+            $questions = CommunityQuestion::with('user', 'course')->get();
+        }
+
+        return $questions;
     }
 
     public function show($id)
