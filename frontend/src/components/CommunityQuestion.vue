@@ -1,12 +1,10 @@
 <script>
 import api from '@/api.js';
 import CommunityAnswerList from './CommunityAnswerList.vue';
-import AuthPrompt from "@/components/AuthPrompt.vue";
 
 export default {
   components: {
-    AuthPrompt,
-    CommunityAnswerList
+    CommunityAnswerList,
   },
   data() {
     return {
@@ -74,7 +72,6 @@ export default {
       <textarea v-model="newAnswer.content" placeholder="Write your answer"></textarea>
       <button type="submit">Submit</button>
     </form>
-    <AuthPrompt v-if="showAuthPrompt" />
   </div>
 </template>
 

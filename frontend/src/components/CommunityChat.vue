@@ -1,9 +1,8 @@
 <script>
 import api from '@/api.js';
-import AuthPrompt from "@/components/AuthPrompt.vue";
 
 export default {
-  components: { AuthPrompt },
+  components: {  },
   props: {
     courseId: {
       type: Number,

@@ -1,11 +1,13 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import Toaster from '@/components/ui/toast/Toaster.vue'
 </script>
 
 <template>
-    <RouterView />
+  <div>
+    <router-view></router-view>
+    <Toaster />
+  </div>
 </template>
 
 <style scoped>
-
 </style>

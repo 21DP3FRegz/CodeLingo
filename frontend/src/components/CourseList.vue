@@ -1,17 +1,15 @@
 <script>
 import api from '@/api.js';
-import AuthPrompt from '@/components/AuthPrompt.vue';
-
+import { Button } from '@/components/ui/button'
 
 export default {
   components: {
-    AuthPrompt,
+    Button,
   },
   data() {
     return {
       courses: [],
       userCourses: [],
-      showAuthPrompt: false,
     };
   },
   async created() {
@@ -55,7 +53,8 @@ export default {
         await this.fetchUserCourses();
       } catch (error) {
         if (error.response && error.response.status === 401) {
-          this.showAuthPrompt = true;
+          localStorage.setItem('desiredCourse', JSON.stringify(course));
+          this.$router.push('/register');
         } else {
           console.error('Failed to start course:', error);
         }
@@ -73,19 +72,22 @@ export default {
 
 <template>
   <div>
-    <h2>Available Courses</h2>
+    <h2
+        class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+    >
+      Available Courses
+    </h2>
     <ul>
       <li v-for="course in courses" :key="course.id">
-        <h3>{{ course.course_name }}</h3>
-        <p>{{ course.description }}</p>
-        <Button v-if="!isCourseStarted(course.id)" @click="startCourse(course)" label="Start Course" />
-        <button v-else @click="viewCourse(course.id)">View Course</button>
+        <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
+          {{ course.course_name }}
+        </h3>
+        <p class="leading-7 [&:not(:first-child)]:mt-6">
+          {{ course.description }}
+        </p>
+        <Button class="mt-3" v-if="!isCourseStarted(course.id)" @click="startCourse(course)">Start Course</Button>
+        <Button class="mt-3" v-else @click="viewCourse(course.id)">View Course</Button>
       </li>
     </ul>
-    <AuthPrompt v-if="showAuthPrompt" />
   </div>
 </template>
-
-<style scoped>
-
-</style>
