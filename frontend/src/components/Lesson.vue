@@ -55,6 +55,6 @@ export default {
     </div>
   </div>
   <div v-else>
-    <Test :lesson-id="lesson.id" />
+    <Test :lesson-id="lesson.id" :lesson-order="lesson.order" />
   </div>
 </template>

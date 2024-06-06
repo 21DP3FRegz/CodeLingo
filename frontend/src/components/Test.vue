@@ -26,6 +26,10 @@ export default {
       type: Number,
       required: true,
     },
+    lessonOrder: {
+      type: Number,
+      required: true,
+    },
   },
   data() {
     return {
@@ -48,7 +52,6 @@ export default {
           },
         });
         this.tests = response.data;
-        // Initialize answers object with default values
         this.tests.forEach(test => {
           this.$set(this.answers, test.id, null);
         });
@@ -73,7 +76,7 @@ export default {
           const token = localStorage.getItem('token');
           const userCourseId = localStorage.getItem('userCourseId');
           await api.put(`/user_courses/${userCourseId}`, {
-            progress: this.lessonId,
+            progress: this.lessonOrder,
           }, {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -83,7 +86,6 @@ export default {
           this.$router.push(`/courses/${course}`);
         } else {
           this.showTryAgainMessage = true;
-          console.log('!!!!!!!!')
         }
       } else {
         this.currentTestIndex++;
