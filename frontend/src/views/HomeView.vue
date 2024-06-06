@@ -4,7 +4,6 @@ import { ref } from 'vue';
 import CourseList from "@/components/CourseList.vue";
 import Footer from "@/components/Footer.vue";
 import {Button} from "@/components/ui/button/index.js";
-import {Cross1Icon} from "@radix-icons/vue";
 
 const hasToken = ref(localStorage.getItem('token'));
 </script>

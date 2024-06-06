@@ -1,10 +1,12 @@
 <script>
 import api from '@/api.js';
 import Test from '@/components/Test.vue';
+import Button from "@/components/ui/button/Button.vue";
 
 export default {
   components: {
     Test,
+    Button,
   },
   props: {
     id: {
@@ -41,18 +43,18 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h2>{{ lesson.title }}</h2>
-    <div v-if="page === 1">
-      <p>{{ lesson.content }}</p>
-      <button @click="nextPage">Next</button>
-    </div>
-    <div v-else>
-      <Test :lesson-id="lesson.id" @prev-page="prevPage" />
+  <div class="container mx-auto px-4 py-6 h-screen" v-if="page === 1">
+    <div class="bg-secondary shadow-lg rounded-lg p-6">
+      <h2 class="text-2xl font-bold mb-4">{{ lesson.title }}</h2>
+      <div >
+        <p class="mb-6">{{ lesson.content }}</p>
+        <Button @click="nextPage">
+          Next
+        </Button>
+      </div>
     </div>
   </div>
+  <div v-else>
+    <Test :lesson-id="lesson.id" />
+  </div>
 </template>
-
-<style scoped>
-
-</style>

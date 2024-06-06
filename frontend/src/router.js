@@ -1,13 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import test from '@/views/test.vue'
+import testing from '@/views/testing.vue'
 import Register from '@/components/auth/Register.vue'
 import Login from '@/components/auth/Login.vue'
 import Profile from '@/components/profile/Profile.vue'
 import Course from '@/components/Course.vue'
 import Lesson from '@/components/Lesson.vue'
-import CommunityQuestionList from '@/components/CommunityChat.vue';
-import CommunityQuestionDetail from '@/components/CommunityQuestion.vue';
 import NotFound from "@/views/NotFound.vue";
 import CommingSoon from "@/views/CommingSoon.vue";
 
@@ -20,9 +18,9 @@ const router = createRouter({
             component: HomeView
         },
         {
-            path: '/test',
-            name: 'test',
-            component: test
+            path: '/testing',
+            name: 'testing',
+            component: testing
         },
         {
             path: '/register',

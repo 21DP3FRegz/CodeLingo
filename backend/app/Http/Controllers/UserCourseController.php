@@ -78,12 +78,18 @@ class UserCourseController extends Controller
             return response()->json(['error' => 'Progress exceeds maximum lesson order'], 400);
         }
 
+        // Проверка нового прогресса на то, что он больше старого
+        if ($validatedData['progress'] <= $userCourse->progress) {
+            return response()->json(['message' => 'New progress is not greater than the current progress. No update performed.'], 200);
+        }
+
         $validatedData['completion_status'] = $validatedData['progress'] == $maxLessonOrder;
 
         $userCourse->update($validatedData);
 
         return response()->json($userCourse, 200);
     }
+
 
     public function destroy($id)
     {

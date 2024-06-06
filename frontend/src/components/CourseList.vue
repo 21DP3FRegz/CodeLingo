@@ -58,7 +58,7 @@ export default {
         await this.fetchUserCourses();
       } catch (error) {
         if (error.response && error.response.status === 401) {
-          localStorage.setItem('desiredCourse', JSON.stringify(course));
+          localStorage.setItem('course', course.id);
           this.$router.push('/register');
         } else {
           console.error('Failed to start course:', error);
@@ -66,6 +66,7 @@ export default {
       }
     },
     viewCourse(id) {
+      localStorage.setItem('course', id);
       this.$router.push(`/courses/${id}`);
     },
     isCourseStarted(courseId) {

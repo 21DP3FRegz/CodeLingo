@@ -48,12 +48,30 @@ export default {
           },
         });
         const userCourse = response.data;
+        if (!Object.keys(userCourse).length) {
+          await this.startCourse(course);
+        }
         this.progress = userCourse.progress;
         localStorage.setItem('userCourseId', userCourse.id);
         this.setCurrentLesson();
       } catch (error) {
         console.error('Failed to fetch user progress:', error);
       }
+    },
+    async startCourse(course) {
+      const token = localStorage.getItem('token');
+      const response = await api.post('/user_courses', {
+        course_id: course.id,
+        progress: 0,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast({
+        description: 'Course started successfully!',
+      });
+      await this.fetchUserProgress();
     },
     setCurrentLesson() {
       const currentLesson = this.course.lessons.find(lesson => lesson.order === this.progress);
@@ -82,14 +100,14 @@ export default {
             v-if="isLessonAccessible(lesson.order)"
             @click="viewLesson(lesson.id)"
             :class="{
-            'bg-primary text-white': lesson.id === currentLessonId,
-            'bg-white text-primary border border-primary': lesson.id !== currentLessonId
-          }"
-            class="w-full py-2 px-4 rounded hover:shadow-xl transition"
+              'bg-primary text-white': lesson.id === currentLessonId,
+              'bg-white text-primary border border-primary': lesson.id !== currentLessonId
+            }"
+            class="w-full py-2 px-4 rounded-full hover:shadow-xl transition"
         >
-          {{ lesson.id === currentLessonId ? 'Start' : 'Repeat' }}: {{ lesson.title }}
+        {{ lesson.id === currentLessonId ? '' : 'Repeat: ' }}{{ lesson.title }}
         </button>
-        <div v-else class="flex items-center justify-center w-full py-2 px-4 rounded bg-gray-300 cursor-not-allowed">
+        <div v-else class="flex items-center justify-center w-full py-2 px-4 rounded-full bg-gray-300 cursor-not-allowed"> <!-- также замените 'rounded' на 'rounded-full' -->
           <LockClosedIcon class="w-5 h-5 text-gray-600"/>
         </div>
       </li>
