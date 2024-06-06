@@ -5,11 +5,7 @@
     "lessons": [
         {
             "title": "Introduction to HTML",
-            "content": "Welcome to HTML Basics for Beginners! In this lesson, we'll cover the basics of HTML (Hypertext Markup Language). HTML is the standard markup language used for creating web pages. We'll learn about the structure of HTML documents, elements, tags, and attributes.",
-            "examples": [
-                "Create a simple HTML document with the basic structure.",
-                "Use different HTML tags to create headings, paragraphs, and lists."
-            ],
+            "content": "Welcome to HTML Basics for Beginners! In this lesson, we'll cover the basics of HTML (Hypertext Markup Language). HTML is the standard markup language used for creating web pages. We'll learn about the structure of HTML documents, elements, tags, and attributes. As an example, let's create a simple HTML document with the basic structure:\n\n<!DOCTYPE html>\n<html>\n<head>\n<title>My First Web Page</title>\n</head>\n<body>\n<h1>Hello, World!</h1>\n<p>This is a paragraph.</p>\n</body>\n</html>\n\nIn this example, we used different HTML tags to create headings, paragraphs, and the basic structure of the document.",
             "tests": [
                 {
                     "question": "What is HTML?",
@@ -20,21 +16,12 @@
                     "question": "What is the purpose of HTML?",
                     "options": ["To style web pages", "To structure web content", "To add interactivity to web pages", "To perform server-side operations"],
                     "correct_answer": 1
-                },
-                {
-                    "question": "Which tag is used to create a paragraph in HTML?",
-                    "options": ["<p>", "<paragraph>", "<para>", "<text>"],
-                    "correct_answer": 0
                 }
             ]
         },
         {
             "title": "HTML Document Structure",
-            "content": "In this lesson, we'll delve deeper into the structure of HTML documents. We'll learn about the <!DOCTYPE> declaration, <html>, <head>, and <body> tags. We'll also explore the use of meta tags for specifying character encoding, viewport settings, and more.",
-            "examples": [
-                "Declare the document type in an HTML document.",
-                "Create the <head> and <body> sections in an HTML document."
-            ],
+            "content": "In this lesson, we'll delve deeper into the structure of HTML documents. We'll learn about the <!DOCTYPE> declaration, <html>, <head>, and <body> tags. We'll also explore the use of meta tags for specifying character encoding, viewport settings, and more. As an example, let's declare the document type in an HTML document:\n\n<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>My First Web Page</title>\n</head>\n<body>\n<h1>Hello, World!</h1>\n<p>This is a paragraph.</p>\n</body>\n</html>\n\nIn this example, we used the <meta> tag to specify character encoding and viewport settings.",
             "tests": [
                 {
                     "question": "What is the purpose of the <!DOCTYPE> declaration?",
@@ -45,21 +32,12 @@
                     "question": "Which tag is used to define the content of an HTML page?",
                     "options": ["<content>", "<body>", "<main>", "<section>"],
                     "correct_answer": 1
-                },
-                {
-                    "question": "What is the purpose of the <head> tag in an HTML document?",
-                    "options": ["To define the main content of the page", "To specify the page title and include metadata", "To create a footer section", "To insert scripts and stylesheets"],
-                    "correct_answer": 1
                 }
             ]
         },
         {
             "title": "HTML Elements and Tags",
-            "content": "HTML documents are composed of elements represented by tags. In this lesson, we'll explore various HTML elements such as headings, paragraphs, lists, links, images, and more. We'll learn how to use these elements to structure and enhance the content of web pages.",
-            "examples": [
-                "Create headings of different levels using <h1> to <h6> tags.",
-                "Insert images into an HTML document using the <img> tag."
-            ],
+            "content": "HTML documents are composed of elements represented by tags. In this lesson, we'll explore various HTML elements such as headings, paragraphs, lists, links, images, and more. We'll learn how to use these elements to structure and enhance the content of web pages. For example, let's create headings of different levels using <h1> to <h6> tags:\n\n<h1>This is a level 1 heading</h1>\n<h2>This is a level 2 heading</h2>\n\nWe can also insert images into an HTML document using the <img> tag:\n\n<img src=\"image.jpg\" alt=\"Image\">",
             "tests": [
                 {
                     "question": "Which tag is used to create a level 1 heading in HTML?",
@@ -70,21 +48,12 @@
                     "question": "What is the correct way to create an unordered list in HTML?",
                     "options": ["<ol>", "<list>", "<ul>", "<order>"],
                     "correct_answer": 2
-                },
-                {
-                    "question": "How do you create a hyperlink in HTML?",
-                    "options": ["<link>", "<a>", "<href>", "<url>"],
-                    "correct_answer": 1
                 }
             ]
         },
         {
             "title": "HTML Forms",
-            "content": "Forms are used to collect user input on web pages. In this lesson, we'll learn how to create forms using HTML. We'll explore form elements such as text fields, radio buttons, checkboxes, select dropdowns, and submit buttons. We'll also discuss form validation and handling form data.",
-            "examples": [
-                "Create a simple contact form with input fields for name, email, and message.",
-                "Add radio buttons and checkboxes to a form for selecting options."
-            ],
+            "content": "Forms are used to collect user input on web pages. In this lesson, we'll learn how to create forms using HTML. We'll explore form elements such as text fields, radio buttons, checkboxes, select dropdowns, and submit buttons. We'll also discuss form validation and handling form data. As an example, let's create a simple contact form with input fields for name, email, and message:\n\n<form action=\"/submit\" method=\"post\">\n  <label for=\"name\">Name:</label><br>\n  <input type=\"text\" id=\"name\" name=\"name\"><br>\n  <label for=\"email\">Email:</label><br>\n  <input type=\"email\" id=\"email\" name=\"email\"><br>\n  <label for=\"message\">Message:</label><br>\n  <textarea id=\"message\" name=\"message\"></textarea><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>",
             "tests": [
                 {
                     "question": "Which tag is used to create a form in HTML?",
@@ -95,21 +64,12 @@
                     "question": "What is the purpose of the 'action' attribute in an HTML form?",
                     "options": ["To specify the method for submitting the form", "To define the URL where form data is sent", "To set the form's layout", "To style the form elements"],
                     "correct_answer": 1
-                },
-                {
-                    "question": "Which input type is used for entering text in a form?",
-                    "options": ["text", "password", "checkbox", "radio"],
-                    "correct_answer": 0
                 }
             ]
         },
         {
             "title": "HTML Tables",
-            "content": "Tables are used to display data in rows and columns on web pages. In this lesson, we'll learn how to create tables using HTML. We'll explore table structure, including <table>, <tr>, <th>, and <td> tags. We'll also learn how to customize tables with attributes like colspan, rowspan, and borders.",
-            "examples": [
-                "Create a simple table to display student grades with rows for subjects and columns for grades.",
-                "Merge cells in a table using the colspan and rowspan attributes."
-            ],
+            "content": "Tables are used to display data in rows and columns on web pages. In this lesson, we'll learn how to create tables using HTML. We'll explore table structure, including <table>, <tr>, <th>, and <td> tags. We'll also learn how to customize tables with attributes like colspan, rowspan, and borders. As an example, let's create a simple table to display student grades with rows for subjects and columns for grades:\n\n<table border=\"1\">\n  <tr>\n    <th>Subject</th>\n    <th>Grade</th>\n  </tr>\n  <tr>\n    <td>Math</td>\n    <td>90</td>\n  </tr>\n  <tr>\n    <td>Science</td>\n    <td>85</td>\n  </tr>\n</table>",
             "tests": [
                 {
                     "question": "Which tag is used to create a table in HTML?",
@@ -120,11 +80,102 @@
                     "question": "What is the purpose of the <th> tag in an HTML table?",
                     "options": ["To define table rows", "To define table cells", "To specify table headings", "To add content to a table"],
                     "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "HTML Semantic Elements",
+            "content": "Semantic elements provide meaning to the content they enclose, making it easier for search engines and screen readers to interpret. In this lesson, we'll explore semantic HTML elements such as <header>, <footer>, <nav>, <article>, <section>, and <aside>. We'll learn how to use these elements to structure web pages in a meaningful way. For example, let's create a simple web page layout using semantic elements:\n\n<header>\n  <h1>My Website</h1>\n  <nav>\n    <ul>\n      <li><a href=\"#\">Home</a></li>\n      <li><a href=\"#\">About</a></li>\n      <li><a href=\"#\">Contact</a></li>\n    </ul>\n  </nav>\n</header>\n\n<section>\n  <article>\n    <h2>Article Title</h2>\n    <p>Article content goes here.</p>\n  </article>\n  <aside>\n    <h3>Related Links</h3>\n    <ul>\n      <li><a href=\"#\">Link 1</a></li>\n      <li><a href=\"#\">Link 2</a></li>\n      <li><a href=\"#\">Link 3</a></li>\n    </ul>\n  </aside>\n</section>\n\n<footer>\n  <p>&copy; 2024 My Website. All rights reserved.</p>\n</footer>",
+            "tests": [
+                {
+                    "question": "What is the purpose of semantic HTML elements?",
+                    "options": ["To provide style and layout to a web page", "To structure content meaningfully for better accessibility and SEO", "To create interactive elements", "To add functionality to web pages"],
+                    "correct_answer": 1
                 },
                 {
-                    "question": "How do you merge two or more cells horizontally in an HTML table?",
-                    "options": ["Using the colspan attribute", "Using the rowspan attribute", "Using the merge attribute", "Using the combine attribute"],
+                    "question": "Which tag is used to define the header of a page in HTML?",
+                    "options": ["<header>", "<head>", "<top>", "<title>"],
                     "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Links and Images",
+            "content": "Links and images are essential elements in web development. In this lesson, we'll explore how to create hyperlinks and insert images using HTML. We'll learn about the <a> tag for links and the <img> tag for images. Additionally, we'll cover attributes such as href, alt, and target. Let's see an example of creating a hyperlink and inserting an image:\n\n<a href=\"https://www.example.com\">Visit Example</a>\n<img src=\"example.jpg\" alt=\"Example Image\">",
+            "tests": [
+                {
+                    "question": "How do you create a hyperlink in HTML?",
+                    "options": ["<link>", "<a>", "<href>", "<url>"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which attribute is used to specify the URL of an image in HTML?",
+                    "options": ["src", "href", "alt", "target"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Audio and Video",
+            "content": "In modern web development, audio and video content plays a significant role. In this lesson, we'll learn how to embed audio and video files using HTML5. We'll explore the <audio> and <video> tags and their attributes for specifying media sources, controls, and playback options. Let's see an example of embedding audio and video:\n\n<audio controls>\n  <source src=\"audio.mp3\" type=\"audio/mpeg\">\n  Your browser does not support the audio element.\n</audio>\n\n<video width=\"320\" height=\"240\" controls>\n  <source src=\"movie.mp4\" type=\"video/mp4\">\n  Your browser does not support the video element.\n</video>",
+            "tests": [
+                {
+                    "question": "Which tag is used to embed audio files in HTML5?",
+                    "options": ["<audio>", "<sound>", "<music>", "<play>"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What attribute is used to specify the source of a media file in HTML?",
+                    "options": ["src", "href", "link", "url"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Forms - Part 2",
+            "content": "Building upon the previous lesson on HTML forms, we'll dive deeper into form elements and functionality. In this lesson, we'll explore advanced form elements such as radio buttons, checkboxes, select dropdowns, and file inputs. We'll also discuss form validation techniques using HTML attributes and JavaScript. Let's see an example of creating radio buttons and checkboxes:\n\n<input type=\"radio\" id=\"male\" name=\"gender\" value=\"male\">\n<label for=\"male\">Male</label><br>\n<input type=\"radio\" id=\"female\" name=\"gender\" value=\"female\">\n<label for=\"female\">Female</label><br>\n\n<input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n<label for=\"vehicle1\">I have a bike</label><br>\n<input type=\"checkbox\" id=\"vehicle2\" name=\"vehicle2\" value=\"Car\">\n<label for=\"vehicle2\">I have a car</label><br>",
+            "tests": [
+                {
+                    "question": "Which input type is used to create radio buttons in HTML?",
+                    "options": ["radio", "checkbox", "select", "text"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What attribute is used to specify multiple options for checkboxes in HTML?",
+                    "options": ["checked", "multiple", "value", "options"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Semantic Elements",
+            "content": "Semantic elements provide meaning to the content they enclose, making it easier for search engines and screen readers to interpret. In this lesson, we'll explore semantic HTML elements such as <header>, <footer>, <nav>, <article>, <section>, and <aside>. We'll learn how to use these elements to structure web pages in a meaningful way. For example, let's create a simple web page layout using semantic elements:\n\n<header>\n  <h1>My Website</h1>\n  <nav>\n    <ul>\n      <li><a href=\"#\">Home</a></li>\n      <li><a href=\"#\">About</a></li>\n      <li><a href=\"#\">Contact</a></li>\n    </ul>\n  </nav>\n</header>\n\n<section>\n  <article>\n    <h2>Article Title</h2>\n    <p>Article content goes here.</p>\n  </article>\n  <aside>\n    <h3>Related Links</h3>\n    <ul>\n      <li><a href=\"#\">Link 1</a></li>\n      <li><a href=\"#\">Link 2</a></li>\n      <li><a href=\"#\">Link 3</a></li>\n    </ul>\n  </aside>\n</section>\n\n<footer>\n  <p>&copy; 2024 My Website. All rights reserved.</p>\n</footer>",
+            "tests": [
+                {
+                    "question": "What is the purpose of semantic HTML elements?",
+                    "options": ["To provide style and layout to a web page", "To structure content meaningfully for better accessibility and SEO", "To create interactive elements", "To add functionality to web pages"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which tag is used to define the header of a page in HTML?",
+                    "options": ["<header>", "<head>", "<top>", "<title>"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Tables",
+            "content": "Tables are used to display data in rows and columns on web pages. In this lesson, we'll learn how to create tables using HTML. We'll explore table structure, including <table>, <tr>, <th>, and <td> tags. We'll also learn how to customize tables with attributes like colspan, rowspan, and borders. As an example, let's create a simple table to display student grades with rows for subjects and columns for grades:\n\n<table border=\"1\">\n  <tr>\n    <th>Subject</th>\n    <th>Grade</th>\n  </tr>\n  <tr>\n    <td>Math</td>\n    <td>90</td>\n  </tr>\n  <tr>\n    <td>Science</td>\n    <td>85</td>\n  </tr>\n</table>",
+            "tests": [
+                {
+                    "question": "Which tag is used to create a table in HTML?",
+                    "options": ["<table>", "<tr>", "<td>", "<th>"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the purpose of the <th> tag in an HTML table?",
+                    "options": ["To define table rows", "To define table cells", "To specify table headings", "To add content to a table"],
+                    "correct_answer": 2
                 }
             ]
         }

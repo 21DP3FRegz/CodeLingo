@@ -1,0 +1,151 @@
+{
+    "course_name": "MySQL Basics for Beginners",
+    "description": "An introductory course to MySQL for beginners, covering essential concepts for managing relational databases.",
+    "language": "English",
+    "lessons": [
+        {
+            "title": "Introduction to Databases",
+            "content": "Welcome to MySQL Basics for Beginners! In this lesson, we'll introduce the concept of databases and their importance in modern applications. We'll learn about relational databases, tables, rows, columns, and SQL (Structured Query Language). Let's start by understanding what a database is and how it organizes data.",
+            "tests": [
+                {
+                    "question": "What is a database?",
+                    "options": ["A collection of files", "A collection of related data", "A programming language", "A website"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is SQL?",
+                    "options": ["A database management system", "A programming language", "A markup language", "A scripting language"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Basic SQL Queries",
+            "content": "In this lesson, we'll dive into SQL, the language used to interact with databases. We'll learn how to perform basic SQL queries such as SELECT, INSERT, UPDATE, and DELETE. Additionally, we'll explore the SELECT statement in detail, including retrieving data from tables and using WHERE clauses for filtering.",
+            "tests": [
+                {
+                    "question": "What SQL statement is used to retrieve data from a database?",
+                    "options": ["SELECT", "INSERT", "UPDATE", "DELETE"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the purpose of the WHERE clause in SQL?",
+                    "options": ["To insert new records into a table", "To update existing records in a table", "To filter records based on a condition", "To delete records from a table"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Creating and Modifying Tables",
+            "content": "Tables are the building blocks of a database. In this lesson, we'll learn how to create and modify tables in MySQL. We'll explore data types, primary keys, foreign keys, and constraints. Additionally, we'll discuss how to alter existing tables and add or remove columns.",
+            "tests": [
+                {
+                    "question": "What is a primary key in a MySQL table?",
+                    "options": ["A unique identifier for each row", "A foreign key reference", "An index for fast data retrieval", "A data type"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "How do you add a new column to an existing table in MySQL?",
+                    "options": ["ALTER TABLE", "CREATE TABLE", "ADD COLUMN", "UPDATE TABLE"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Data Manipulation with SQL",
+            "content": "In this lesson, we'll explore advanced SQL queries for manipulating data in MySQL databases. We'll learn about the UPDATE statement for modifying existing data, the DELETE statement for removing data from tables, and the INSERT statement for adding new records. Additionally, we'll cover the use of transactions to ensure data consistency and integrity.",
+            "tests": [
+                {
+                    "question": "Which SQL statement is used to delete data from a table?",
+                    "options": ["SELECT", "UPDATE", "DELETE", "INSERT"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "What is the purpose of transactions in MySQL?",
+                    "options": ["To retrieve data from tables", "To modify existing records", "To ensure data consistency and integrity", "To filter records based on conditions"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "SQL Joins",
+            "content": "Joins are used to combine data from multiple tables based on a related column between them. In this lesson, we'll learn about different types of SQL joins, including INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN. We'll understand how to use joins to fetch data from related tables and perform complex queries.",
+            "tests": [
+                {
+                    "question": "Which SQL JOIN returns all rows when there is at least one match in both tables being joined?",
+                    "options": ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL OUTER JOIN"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the primary purpose of SQL joins?",
+                    "options": ["To delete records from tables", "To retrieve data from a single table", "To combine data from multiple tables", "To update existing records in tables"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Indexes and Optimization",
+            "content": "Indexes are used to improve the performance of database queries by enabling faster data retrieval. In this lesson, we'll learn about indexes in MySQL and how to create them for tables. We'll explore different types of indexes, such as primary keys, unique indexes, and composite indexes. Additionally, we'll discuss optimization techniques to enhance query performance.",
+            "tests": [
+                {
+                    "question": "What is the purpose of indexes in a MySQL database?",
+                    "options": ["To delete records from tables", "To retrieve data from a single table", "To improve query performance", "To combine data from multiple tables"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "Which type of index ensures that all values in a column are unique?",
+                    "options": ["Primary key index", "Unique index", "Composite index", "Foreign key index"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Aggregate Functions",
+            "content": "Aggregate functions are used to perform calculations on sets of data in MySQL. In this lesson, we'll explore common aggregate functions such as COUNT, SUM, AVG, MIN, and MAX. We'll learn how to use these functions to retrieve useful insights from database tables.",
+            "tests": [
+                {
+                    "question": "Which SQL function is used to count the number of rows in a table?",
+                    "options": ["COUNT", "SUM", "AVG", "MIN"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What does the AVG function do in MySQL?",
+                    "options": ["Returns the sum of values in a column", "Returns the highest value in a column", "Returns the average value of a column", "Returns the minimum value in a column"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Stored Procedures and Functions",
+            "content": "Stored procedures and functions are reusable blocks of SQL code that can be executed on the server. In this lesson, we'll learn how to create and use stored procedures and functions in MySQL. We'll understand the differences between them and explore their advantages in database development.",
+            "tests": [
+                {
+                    "question": "What is a stored procedure in MySQL?",
+                    "options": ["A sequence of SQL statements that can be executed on the server", "A function that returns a single value", "An index created for faster data retrieval", "A constraint to enforce data integrity"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the primary advantage of using stored procedures in MySQL?",
+                    "options": ["Improved security", "Better query performance", "Code reusability", "Reduced database size"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Normalization",
+            "content": "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. In this lesson, we'll explore the concepts of database normalization and its importance in relational database design. We'll learn about different normalization forms (1NF, 2NF, 3NF) and how to apply them to database tables.",
+            "tests": [
+                {
+                    "question": "What is the primary goal of normalization in a database?",
+                    "options": ["To increase redundancy", "To improve data integrity", "To decrease query performance", "To reduce data duplication"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which normalization form eliminates repeating groups of data?",
+                    "options": ["First Normal Form (1NF)", "Second Normal Form (2NF)", "Third Normal Form (3NF)", "Fourth Normal Form (4NF)"],
+                    "correct_answer": 0
+                }
+            ]
+        }
+    ]
+}

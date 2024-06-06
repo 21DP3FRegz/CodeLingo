@@ -31,7 +31,6 @@ export default {
   async created() {
     await this.fetchCourse();
     await this.fetchUserProgress();
-    console.log(this.progress)
   },
   methods: {
     async fetchCourse() {
