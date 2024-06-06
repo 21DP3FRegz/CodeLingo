@@ -1,0 +1,151 @@
+{
+    "course_name": "Python Basics for Beginners",
+    "description": "An introductory course to Python programming for beginners, covering fundamental concepts and syntax.",
+    "language": "English",
+    "lessons": [
+        {
+            "title": "Getting Started with Python",
+            "content": "Welcome to Python Basics for Beginners! In this lesson, we'll get started with Python programming. We'll learn how to install Python, set up a development environment, and run our first Python program. Additionally, we'll cover basic concepts such as print function, variables, and simple arithmetic operations.",
+            "tests": [
+                {
+                    "question": "What is Python?",
+                    "options": ["A high-level programming language", "A database management system", "A markup language", "An operating system"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the purpose of the 'print' function in Python?",
+                    "options": ["To read user input", "To perform arithmetic operations", "To display output", "To define a function"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Variables and Data Types",
+            "content": "Variables are used to store data in a Python program. In this lesson, we'll learn how to declare variables and work with different data types such as integers, floats, strings, and booleans. We'll also explore type conversion and basic operations with these data types.",
+            "tests": [
+                {
+                    "question": "What is the correct way to declare a variable in Python?",
+                    "options": ["variable 1 = 10", "1_variable = 10", "variable_1 = 10", "variable-1 = 10"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "What data type is used to represent text in Python?",
+                    "options": ["int", "float", "string", "boolean"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Basic Input and Output",
+            "content": "Input and output operations are essential in Python programming. In this lesson, we'll learn how to take user input using the 'input' function and display output using the 'print' function. We'll also cover formatting output and handling user input errors.",
+            "tests": [
+                {
+                    "question": "Which function is used to take user input in Python?",
+                    "options": ["read", "input", "get_input", "user_input"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is the purpose of the 'input' function in Python?",
+                    "options": ["To display output", "To perform arithmetic operations", "To read user input", "To define a function"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Basic Arithmetic Operations",
+            "content": "Arithmetic operations are fundamental in Python programming. In this lesson, we'll explore basic arithmetic operations such as addition, subtraction, multiplication, and division. We'll also cover exponentiation and modular arithmetic.",
+            "tests": [
+                {
+                    "question": "Which operator is used for addition in Python?",
+                    "options": ["+", "-", "*", "/"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What does the '%' operator do in Python?",
+                    "options": ["Returns the quotient of division", "Returns the remainder of division", "Performs exponentiation", "Performs floor division"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Conditional Statements (if, elif, else)",
+            "content": "Conditional statements allow us to execute different blocks of code based on certain conditions. In this lesson, we'll learn about the 'if', 'elif', and 'else' statements in Python. We'll understand how to use them to make decisions in our programs.",
+            "tests": [
+                {
+                    "question": "What is the purpose of the 'if' statement in Python?",
+                    "options": ["To execute a block of code if a condition is true", "To execute a block of code if a condition is false", "To execute multiple conditions", "To iterate over a sequence of items"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What does the 'elif' statement do in Python?",
+                    "options": ["Checks another condition if the previous one is true", "Executes a block of code if the condition is false", "Terminates the program", "Performs iteration"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "Loops (for, while)",
+            "content": "Loops are used to execute a block of code repeatedly. In this lesson, we'll learn about 'for' and 'while' loops in Python. We'll understand how to use them to iterate over sequences and perform repetitive tasks.",
+            "tests": [
+                {
+                    "question": "What is the purpose of a 'for' loop in Python?",
+                    "options": ["To execute a block of code while a condition is true", "To execute a block of code a specific number of times", "To execute a block of code if a condition is true", "To iterate over a sequence of items"],
+                    "correct_answer": 3
+                },
+                {
+                    "question": "What does the 'while' loop do in Python?",
+                    "options": ["Iterates over a sequence of items", "Executes a block of code while a condition is true", "Terminates the program", "Executes a block of code a specific number of times"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "Lists and Tuples",
+            "content": "Lists and tuples are two types of data structures in Python used to store collections of items. In this lesson, we'll learn about lists, which are mutable sequences, and tuples, which are immutable sequences. We'll explore how to create, access, and manipulate elements in lists and tuples.",
+            "tests": [
+                {
+                    "question": "What is the primary difference between a list and a tuple in Python?",
+                    "options": ["Lists are mutable, tuples are immutable", "Lists can only store integers, tuples can store any data type", "Lists are immutable, tuples are mutable", "Lists and tuples are the same"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "How do you access the third element of a list in Python?",
+                    "options": ["list[3]", "list(3)", "list[2]", "list(2)"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Dictionaries",
+            "content": "Dictionaries are another type of data structure in Python used to store key-value pairs. In this lesson, we'll learn how to create dictionaries and access elements by their keys. We'll also explore common dictionary methods and operations.",
+            "tests": [
+                {
+                    "question": "What is a dictionary in Python?",
+                    "options": ["A list of elements", "A data type that stores key-value pairs", "An immutable sequence", "A type of loop"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "How do you access the value associated with a key in a dictionary?",
+                    "options": ["By index", "By value", "By key", "By element"],
+                    "correct_answer": 2
+                }
+            ]
+        },
+        {
+            "title": "Functions",
+            "content": "Functions are reusable blocks of code that perform a specific task. In this lesson, we'll learn how to define and call functions in Python. We'll understand how to pass arguments to functions, return values, and work with function scopes.",
+            "tests": [
+                {
+                    "question": "What is a function in Python?",
+                    "options": ["A single line of code", "A reusable block of code that performs a specific task", "A loop statement", "A conditional statement"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "How do you call a function in Python?",
+                    "options": ["Using a loop", "Using a conditional statement", "By its name followed by parentheses", "By its return value"],
+                    "correct_answer": 2
+                }
+            ]
+        }
+    ]
+}
