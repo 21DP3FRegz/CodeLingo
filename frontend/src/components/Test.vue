@@ -90,7 +90,7 @@ export default {
       }
     },
     tryAgain() {
-      this.$router.push(`/lessons/${this.lessonId}`);
+      this.$router.go(0);
     },
     goHome() {
       this.$router.push('/');

@@ -1,0 +1,132 @@
+{
+    "course_name": "HTML Basics for Beginners",
+    "description": "An introductory course to HTML for beginners, covering essential concepts for creating web pages.",
+    "language": "English",
+    "lessons": [
+        {
+            "title": "Introduction to HTML",
+            "content": "Welcome to HTML Basics for Beginners! In this lesson, we'll cover the basics of HTML (Hypertext Markup Language). HTML is the standard markup language used for creating web pages. We'll learn about the structure of HTML documents, elements, tags, and attributes.",
+            "examples": [
+                "Create a simple HTML document with the basic structure.",
+                "Use different HTML tags to create headings, paragraphs, and lists."
+            ],
+            "tests": [
+                {
+                    "question": "What is HTML?",
+                    "options": ["A programming language", "A markup language", "A scripting language", "A database language"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is the purpose of HTML?",
+                    "options": ["To style web pages", "To structure web content", "To add interactivity to web pages", "To perform server-side operations"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which tag is used to create a paragraph in HTML?",
+                    "options": ["<p>", "<paragraph>", "<para>", "<text>"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Document Structure",
+            "content": "In this lesson, we'll delve deeper into the structure of HTML documents. We'll learn about the <!DOCTYPE> declaration, <html>, <head>, and <body> tags. We'll also explore the use of meta tags for specifying character encoding, viewport settings, and more.",
+            "examples": [
+                "Declare the document type in an HTML document.",
+                "Create the <head> and <body> sections in an HTML document."
+            ],
+            "tests": [
+                {
+                    "question": "What is the purpose of the <!DOCTYPE> declaration?",
+                    "options": ["To define the document type", "To declare variables", "To include external scripts", "To specify CSS styles"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "Which tag is used to define the content of an HTML page?",
+                    "options": ["<content>", "<body>", "<main>", "<section>"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is the purpose of the <head> tag in an HTML document?",
+                    "options": ["To define the main content of the page", "To specify the page title and include metadata", "To create a footer section", "To insert scripts and stylesheets"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "HTML Elements and Tags",
+            "content": "HTML documents are composed of elements represented by tags. In this lesson, we'll explore various HTML elements such as headings, paragraphs, lists, links, images, and more. We'll learn how to use these elements to structure and enhance the content of web pages.",
+            "examples": [
+                "Create headings of different levels using <h1> to <h6> tags.",
+                "Insert images into an HTML document using the <img> tag."
+            ],
+            "tests": [
+                {
+                    "question": "Which tag is used to create a level 1 heading in HTML?",
+                    "options": ["<heading>", "<h1>", "<header>", "<title>"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "What is the correct way to create an unordered list in HTML?",
+                    "options": ["<ol>", "<list>", "<ul>", "<order>"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "How do you create a hyperlink in HTML?",
+                    "options": ["<link>", "<a>", "<href>", "<url>"],
+                    "correct_answer": 1
+                }
+            ]
+        },
+        {
+            "title": "HTML Forms",
+            "content": "Forms are used to collect user input on web pages. In this lesson, we'll learn how to create forms using HTML. We'll explore form elements such as text fields, radio buttons, checkboxes, select dropdowns, and submit buttons. We'll also discuss form validation and handling form data.",
+            "examples": [
+                "Create a simple contact form with input fields for name, email, and message.",
+                "Add radio buttons and checkboxes to a form for selecting options."
+            ],
+            "tests": [
+                {
+                    "question": "Which tag is used to create a form in HTML?",
+                    "options": ["<form>", "<input>", "<button>", "<submit>"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the purpose of the 'action' attribute in an HTML form?",
+                    "options": ["To specify the method for submitting the form", "To define the URL where form data is sent", "To set the form's layout", "To style the form elements"],
+                    "correct_answer": 1
+                },
+                {
+                    "question": "Which input type is used for entering text in a form?",
+                    "options": ["text", "password", "checkbox", "radio"],
+                    "correct_answer": 0
+                }
+            ]
+        },
+        {
+            "title": "HTML Tables",
+            "content": "Tables are used to display data in rows and columns on web pages. In this lesson, we'll learn how to create tables using HTML. We'll explore table structure, including <table>, <tr>, <th>, and <td> tags. We'll also learn how to customize tables with attributes like colspan, rowspan, and borders.",
+            "examples": [
+                "Create a simple table to display student grades with rows for subjects and columns for grades.",
+                "Merge cells in a table using the colspan and rowspan attributes."
+            ],
+            "tests": [
+                {
+                    "question": "Which tag is used to create a table in HTML?",
+                    "options": ["<table>", "<tr>", "<td>", "<th>"],
+                    "correct_answer": 0
+                },
+                {
+                    "question": "What is the purpose of the <th> tag in an HTML table?",
+                    "options": ["To define table rows", "To define table cells", "To specify table headings", "To add content to a table"],
+                    "correct_answer": 2
+                },
+                {
+                    "question": "How do you merge two or more cells horizontally in an HTML table?",
+                    "options": ["Using the colspan attribute", "Using the rowspan attribute", "Using the merge attribute", "Using the combine attribute"],
+                    "correct_answer": 0
+                }
+            ]
+        }
+    ]
+}

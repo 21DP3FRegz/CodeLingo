@@ -5,6 +5,9 @@ import { LockClosedIcon } from '@radix-icons/vue'
 import CommunityChat from './CommunityChat.vue';
 import Footer from "@/components/Footer.vue";
 import Button from "@/components/ui/button/Button.vue";
+import { useToast } from '@/components/ui/toast/use-toast'
+
+const { toast } = useToast()
 
 export default {
   components: {
@@ -22,13 +25,13 @@ export default {
   data() {
     return {
       course: null,
-      currentLessonId: null,
       progress: 0,
     };
   },
   async created() {
     await this.fetchCourse();
     await this.fetchUserProgress();
+    console.log(this.progress)
   },
   methods: {
     async fetchCourse() {
@@ -42,26 +45,26 @@ export default {
     async fetchUserProgress() {
       try {
         const token = localStorage.getItem('token');
-        const response = await api.get(`/user_courses?course_id=${this.id}`, {
+        const response = await api.get(`/user_courses?course_id=${this.course.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         const userCourse = response.data;
-        if (!Object.keys(userCourse).length) {
-          await this.startCourse(course);
+        if (!userCourse.id) {
+          await this.startCourse();
+        } else {
+          this.progress = userCourse.progress;
+          localStorage.setItem('userCourseId', userCourse.id);
         }
-        this.progress = userCourse.progress;
-        localStorage.setItem('userCourseId', userCourse.id);
-        this.setCurrentLesson();
       } catch (error) {
         console.error('Failed to fetch user progress:', error);
       }
     },
-    async startCourse(course) {
+    async startCourse() {
       const token = localStorage.getItem('token');
       const response = await api.post('/user_courses', {
-        course_id: course.id,
+        course_id: this.course.id,
         progress: 0,
       }, {
         headers: {
@@ -72,10 +75,6 @@ export default {
         description: 'Course started successfully!',
       });
       await this.fetchUserProgress();
-    },
-    setCurrentLesson() {
-      const currentLesson = this.course.lessons.find(lesson => lesson.order === this.progress);
-      this.currentLessonId = currentLesson ? currentLesson.id+1 : null;
     },
     isLessonAccessible(order) {
       return order <= this.progress + 1;
@@ -100,12 +99,12 @@ export default {
             v-if="isLessonAccessible(lesson.order)"
             @click="viewLesson(lesson.id)"
             :class="{
-              'bg-primary text-white': lesson.id === currentLessonId,
-              'bg-white text-primary border border-primary': lesson.id !== currentLessonId
+              'bg-primary text-white': lesson.id === progress+1,
+              'bg-white text-primary border border-primary': lesson.id !== progress+1
             }"
             class="w-full py-2 px-4 rounded-full hover:shadow-xl transition"
         >
-        {{ lesson.id === currentLessonId ? '' : 'Repeat: ' }}{{ lesson.title }}
+        {{ lesson.id === progress+1 ? '' : 'Repeat: ' }}{{ lesson.title }}
         </button>
         <div v-else class="flex items-center justify-center w-full py-2 px-4 rounded-full bg-gray-300 cursor-not-allowed"> <!-- также замените 'rounded' на 'rounded-full' -->
           <LockClosedIcon class="w-5 h-5 text-gray-600"/>
