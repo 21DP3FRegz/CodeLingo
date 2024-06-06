@@ -69,7 +69,7 @@
         },
         {
             "title": "Conditional Statements (if, elif, else)",
-            "content": "Conditional statements allow us to execute different blocks of code based on certain conditions. In this lesson, we'll learn about the 'if', 'elif', and 'else' statements in Python. We'll understand how to use them to make decisions in our programs.",
+            "content": "Conditional statements allow us to execute different blocks of code based on certain conditions. In this lesson, we'll learn about the 'if', 'elif', and 'else' statements in Python.\n\nThe 'if' statement is used to check a condition, and if the condition is true, it executes a block of code.\n\nThe 'elif' (else if) statement allows us to check multiple conditions if the previous ones are false.\n\nThe 'else' statement is used to execute a block of code if none of the previous conditions are true.\n\nHere is an example:\n\n```python\nx = 10\nif x > 15:\n    print('x is greater than 15')\nelif x == 10:\n    print('x is equal to 10')\nelse:\n    print('x is less than 10')\n```\n\nIn this example, the output will be 'x is equal to 10' because the condition `x == 10` is true.",
             "tests": [
                 {
                     "question": "What is the purpose of the 'if' statement in Python?",
@@ -78,8 +78,13 @@
                 },
                 {
                     "question": "What does the 'elif' statement do in Python?",
-                    "options": ["Checks another condition if the previous one is true", "Executes a block of code if the condition is false", "Terminates the program", "Performs iteration"],
+                    "options": ["Checks another condition if the previous one is false", "Executes a block of code if the condition is false", "Terminates the program", "Performs iteration"],
                     "correct_answer": 0
+                },
+                {
+                    "question": "What does the 'else' statement do in Python?",
+                    "options": ["Executes a block of code if the previous conditions are true", "Executes a block of code if none of the previous conditions are true", "Checks another condition", "Ends the conditional block"],
+                    "correct_answer": 1
                 }
             ]
         },
