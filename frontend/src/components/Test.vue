@@ -137,8 +137,8 @@ export default {
           <ul>
             <li v-for="(error, index) in errors" :key="index" class="mb-2 text-left">
               <strong>Question:</strong> {{ error.question }}<br>
-              <strong>Correct Answer:</strong> {{ tests.find(test => test.question === error.question).options[tests.find(test => test.question === error.question).correct_answer] }}<br>
-              <strong>Your Answer:</strong> {{ tests.find(test => test.question === error.question).options[error.user_answer] }}
+              <strong class="text-primary">Correct Answer:</strong> {{ tests.find(test => test.question === error.question).options[tests.find(test => test.question === error.question).correct_answer] }}<br>
+              <strong class="text-destructive">Your Answer:</strong> {{ tests.find(test => test.question === error.question).options[error.user_answer] }}
             </li>
           </ul>
         </CardContent>
