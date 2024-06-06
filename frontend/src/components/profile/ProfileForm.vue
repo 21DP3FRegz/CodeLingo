@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { h, ref } from 'vue'
+import {h, onMounted, ref} from 'vue'
 import { FieldArray, useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
-import { Cross1Icon } from '@radix-icons/vue'
+import api from '@/api.js';
 
 import { Input } from '@/components/ui/input'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button'
 import { useToast } from '@/components/ui/toast/use-toast'
 
 const { toast } = useToast()
+const form = ref(null);
 
 const profileFormSchema = toTypedSchema(z.object({
   username: z
@@ -23,24 +24,26 @@ const profileFormSchema = toTypedSchema(z.object({
       .max(30, {
         message: 'Username must not be longer than 30 characters.',
       }),
-  bio: z.string().max(160, { message: 'Bio must not be longer than 160 characters.' }).min(4, { message: 'Bio must be at least 2 characters.' }),
-  urls: z
-      .array(
-          z.object({
-            value: z.string().url({ message: 'Please enter a valid URL.' }),
-          }),
-      )
-      .optional(),
+  bio: z.string().max(160, { message: 'Bio must not be longer than 160 characters.' }).optional(),
 }))
 
-const { handleSubmit, resetForm } = useForm({
+// not working =(
+const name = ref('')
+
+onMounted(async () => {
+  try {
+    const response = await api.get('/user', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
+    name.value = response.data.name;
+  } catch (error) {
+    console.error('Failed to fetch user data', error);
+  }
+})
+
+const { handleSubmit } = useForm({
   validationSchema: profileFormSchema,
   initialValues: {
-    bio: 'I own a computer.',
-    urls: [
-      { value: 'https://shadcn.com' },
-      { value: 'http://twitter.com/shadcn' },
-    ],
+    username: 'Feliks',
+    bio: '',
   },
 })
 
@@ -67,7 +70,7 @@ const onSubmit = handleSubmit((values) => {
       <FormItem>
         <FormLabel>Username</FormLabel>
         <FormControl>
-          <Input type="text" placeholder="shadcn" v-bind="componentField" />
+          <Input type="text" placeholder="username" v-bind="componentField" />
         </FormControl>
         <FormDescription>
           This is your public display name. It can be your real name or a pseudonym. You can only change this once every 30 days.
@@ -92,14 +95,6 @@ const onSubmit = handleSubmit((values) => {
     <div class="flex gap-2 justify-start">
       <Button type="submit">
         Update profile
-      </Button>
-
-      <Button
-          type="button"
-          variant="outline"
-          @click="resetForm"
-      >
-        Reset form
       </Button>
     </div>
   </form>

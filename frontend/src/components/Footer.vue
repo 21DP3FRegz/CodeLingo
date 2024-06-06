@@ -9,9 +9,10 @@ import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 </script>
 
 <template>
-  <footer class="fixed bottom-0 left-0 right-0 z-10 bg-white shadow-md">
-        <NavigationMenu class="flex justify-between p-4 w-full">
-          <NavigationMenuList class="flex content-around">
+  <footer class="fixed bottom-0 left-0 right-0 z-10 bg-white shadow-md border">
+    <div class="p-4 flex justify-center">
+        <NavigationMenu>
+          <NavigationMenuList class="flex space-x-20">
             <NavigationMenuItem>
               <RouterLink to="/">
                 <NavigationMenuLink :class="navigationMenuTriggerStyle()">
@@ -37,5 +38,6 @@ import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
+      </div>
   </footer>
 </template>

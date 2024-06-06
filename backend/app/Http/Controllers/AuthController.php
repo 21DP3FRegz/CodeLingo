@@ -15,6 +15,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'bio' => 'sometimes|string|max:255',
         ]);
 
         $user = User::create($validatedData);
@@ -49,6 +50,7 @@ class AuthController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'sometimes|string|max:255',
+            'bio' => 'sometimes|string|max:255'
         ]);
 
         if (isset($validatedData['name'])) {

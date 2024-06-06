@@ -15,10 +15,6 @@ const sidebarNavItems: Item[] = [
     href: '/profile',
   },
   {
-    title: 'Appearance',
-    href: '/appearance',
-  },
-  {
     title: 'Log out',
     href: '/logout',
   },

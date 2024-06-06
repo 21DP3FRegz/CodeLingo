@@ -53,10 +53,10 @@ export default {
               Authorization: `Bearer ${token}`,
             },
           });
-          this.$router.push(`/courses/${this.lessonId}`);
+          this.$router.push(`/courses/${1}`);
         } else {
           console.log('lose')
-          this.$router.push(`/courses/${this.lessonId}`);
+          this.$router.push(`/courses/${1}`);
         }
 
 

@@ -1,6 +1,9 @@
 <script>
 import api from '@/api.js';
 import { Button } from '@/components/ui/button'
+import { useToast } from '@/components/ui/toast/use-toast'
+
+const { toast } = useToast()
 
 export default {
   components: {
@@ -49,7 +52,9 @@ export default {
             Authorization: `Bearer ${token}`,
           },
         });
-        alert('Course started successfully!');
+        toast({
+          description: 'Course started successfully!',
+        });
         await this.fetchUserCourses();
       } catch (error) {
         if (error.response && error.response.status === 401) {
@@ -71,14 +76,15 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h2
-        class="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
-    >
-      Available Courses
-    </h2>
-    <ul>
-      <li v-for="course in courses" :key="course.id">
+  <div
+      class="relative sm:flex flex-col sm:justify-center sm:items-center min-h-screen selection:bg-red-500 selection:text-white"
+  >
+        <span class="m-8 font-semibold text-5xl text-gray-800 leading-tight">
+            Available Courses
+        </span>
+
+    <ul class="grid grid-cols-3 gap-4">
+      <li v-for="course in courses" :key="course.id" class="p-8">
         <h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
           {{ course.course_name }}
         </h3>
@@ -89,5 +95,6 @@ export default {
         <Button class="mt-3" v-else @click="viewCourse(course.id)">View Course</Button>
       </li>
     </ul>
+
   </div>
 </template>

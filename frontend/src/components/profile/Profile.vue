@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import ProfileLayout from "@/layouts/ProfileLayout.vue";
-import ProfileForm from "@/components/auth/ProfileForm.vue";
+import ProfileForm from "@/components/profile/ProfileForm.vue";
 </script>
 
 <template>

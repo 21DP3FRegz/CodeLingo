@@ -1,35 +1,17 @@
-<template>
-  <div>
-    <h2>{{ course.course_name }}</h2>
-    <p>{{ course.description }}</p>
-    <h3>Lessons</h3>
-    <ul>
-      <li v-for="lesson in course.lessons" :key="lesson.id">
-        <button
-            @click="viewLesson(lesson.id)"
-            :disabled="!isLessonAccessible(lesson.order)"
-            :class="{
-            current: lesson.id === currentLessonId,
-            accessible: isLessonAccessible(lesson.order),
-            inaccessible: !isLessonAccessible(lesson.order)
-          }"
-        >
-          {{ lesson.title }}
-        </button>
-      </li>
-    </ul>
-    <community-chat :course-id="course.id"></community-chat>
-    <button @click="goBack">Back to Courses</button>
-  </div>
-</template>
-
 <script>
 import api from '@/api.js';
+
+import { LockClosedIcon } from '@radix-icons/vue'
 import CommunityChat from './CommunityChat.vue';
+import Footer from "@/components/Footer.vue";
+import Button from "@/components/ui/button/Button.vue";
 
 export default {
   components: {
-    CommunityChat
+    Button,
+    Footer,
+    CommunityChat,
+    LockClosedIcon
   },
   props: {
     id: {
@@ -41,7 +23,7 @@ export default {
     return {
       course: null,
       currentLessonId: null,
-      progress: 0, // Прогресс пользователя в курсе
+      progress: 0,
     };
   },
   async created() {
@@ -75,7 +57,7 @@ export default {
     },
     setCurrentLesson() {
       const currentLesson = this.course.lessons.find(lesson => lesson.order === this.progress);
-      this.currentLessonId = currentLesson ? currentLesson.id : null;
+      this.currentLessonId = currentLesson ? currentLesson.id+1 : null;
     },
     isLessonAccessible(order) {
       return order <= this.progress + 1;
@@ -85,25 +67,35 @@ export default {
         this.$router.push(`/lessons/${lessonId}`);
       }
     },
-    goBack() {
-      this.$router.push('/');
-    },
   },
 };
 </script>
 
-<style scoped>
-.current {
-  font-weight: bold;
-  color: green;
-}
-
-.accessible {
-  background-color: #e0ffe0; /* Светло-зеленый фон для доступных уроков */
-}
-
-.inaccessible {
-  background-color: #ffe0e0; /* Светло-красный фон для недоступных уроков */
-  cursor: not-allowed; /* Курсор в виде запрета для недоступных уроков */
-}
-</style>
+<template>
+  <div class="container mx-auto px-4">
+    <h2 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">{{ course.course_name }}</h2>
+    <p class="leading-7 [&:not(:first-child)]:mt-6">{{ course.description }}</p>
+    <h3 class="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">Lessons</h3>
+    <ul class="space-y-4">
+      <li v-for="lesson in course.lessons" :key="lesson.id" class="shadow-lg p-4 rounded-lg bg-white">
+        <button
+            v-if="isLessonAccessible(lesson.order)"
+            @click="viewLesson(lesson.id)"
+            :class="{
+            'bg-primary text-white': lesson.id === currentLessonId,
+            'bg-white text-primary border border-primary': lesson.id !== currentLessonId
+          }"
+            class="w-full py-2 px-4 rounded hover:shadow-xl transition"
+        >
+          {{ lesson.id === currentLessonId ? 'Start' : 'Repeat' }}: {{ lesson.title }}
+        </button>
+        <div v-else class="flex items-center justify-center w-full py-2 px-4 rounded bg-gray-300 cursor-not-allowed">
+          <LockClosedIcon class="w-5 h-5 text-gray-600"/>
+        </div>
+      </li>
+    </ul>
+    <community-chat :course-id="course.id" class="mt-8"></community-chat>
+  </div>
+  <div class="mb-20"></div>
+  <Footer/>
+</template>

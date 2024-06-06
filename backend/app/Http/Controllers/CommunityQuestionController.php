@@ -16,9 +16,12 @@ class CommunityQuestionController extends Controller
         if ($course_id) {
             $questions = CommunityQuestion::with('user', 'course')
                 ->where('course_id', $course_id)
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $questions = CommunityQuestion::with('user', 'course')->get();
+            $questions = CommunityQuestion::with('user', 'course')
+                ->orderBy('created_at', 'desc')
+                ->get();
         }
 
         return $questions;
