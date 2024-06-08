@@ -53,11 +53,9 @@ class AuthController extends Controller
             'bio' => 'sometimes|string|max:255'
         ]);
 
-        if (isset($validatedData['name'])) {
-            $user->name = $validatedData['name'];
-        }
+        $dataToUpdate = array_intersect_key($validatedData, array_flip(['name', 'bio']));
 
-        $user->save();
+        $user->update($dataToUpdate);
 
         return $user;
     }

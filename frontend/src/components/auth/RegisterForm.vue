@@ -32,7 +32,7 @@ const formSchema = toTypedSchema(z.object({
 }));
 
 
-const { handleSubmit, errors } = useForm({
+const { handleSubmit, error } = useForm({
   validationSchema: formSchema,
 });
 

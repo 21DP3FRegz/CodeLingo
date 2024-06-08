@@ -22,7 +22,7 @@ class CourseController extends Controller
         $validatedData = $request->validate([
             'course_name' => 'required|string|max:255|unique:courses',
             'description' => 'required|string',
-            'language' => 'required|string|max:255',
+            'language' => 'sometimes|string|max:255',
         ]);
 
         return Course::create($validatedData);
@@ -31,7 +31,7 @@ class CourseController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'course_name' => 'string|max:255',
+            'course_name' => 'string|max:255|unique:courses',
             'description' => 'string',
             'language' => 'string|max:255',
         ]);

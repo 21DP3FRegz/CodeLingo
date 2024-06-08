@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('course_name');
             $table->text('description');
-            $table->string('language');
+            $table->string('language')->default('English');
             $table->timestamps();
         });
     }
