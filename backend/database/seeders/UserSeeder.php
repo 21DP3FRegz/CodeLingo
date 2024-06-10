@@ -18,9 +18,10 @@ class UserSeeder extends Seeder
         );
 
         User::updateOrCreate([
-                'email' => 'feliks@the.creator',
-                'name' => 'feliks',
-                'password' => '$2y$10$sle.82qcGEFdsHuS86sQC.gjgyVG.iFhTnuuC6X2KD4IJI367Jhfm',
+                'email' => 'admin',
+                'name' => 'admin',
+                'password' => 'admin',
+                'role' => 'admin'
             ]
         );
     }

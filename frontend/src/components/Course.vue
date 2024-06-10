@@ -103,15 +103,15 @@ export default {
             }"
             class="w-full py-2 px-4 rounded-full hover:shadow-xl transition"
         >
-        {{ lesson.order === progress+1 ? '' : 'Repeat: ' }}{{ lesson.title }}
+        {{ lesson.title }}
         </button>
-        <div v-else class="flex items-center justify-center w-full py-2 px-4 rounded-full bg-gray-300 cursor-not-allowed"> <!-- также замените 'rounded' на 'rounded-full' -->
+        <div v-else class="flex items-center justify-center w-full py-2 px-4 rounded-full bg-gray-300 cursor-not-allowed">
           <LockClosedIcon class="w-5 h-5 text-gray-600"/>
         </div>
       </li>
     </ul>
-    <community-chat :course-id="course.id" class="mt-8"></community-chat>
+    <community-chat :course-id="course.id" class="my-16"></community-chat>
+    <div class="h-20"></div>
   </div>
-  <div class="mb-20"></div>
   <Footer/>
 </template>

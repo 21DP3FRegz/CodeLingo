@@ -7,6 +7,7 @@ import {Label} from '@/components/ui/label'
 import {Textarea} from '@/components/ui/textarea'
 import { Toggle } from '@/components/ui/toggle'
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from '@/components/ui/tooltip'
+import router from "@/router.js";
 
 export default {
   components: {
@@ -44,7 +45,7 @@ export default {
       try {
         const token = localStorage.getItem('token'); // delete this
         if (!token) {
-          this.showAuthPrompt = true;
+          router.push('/login');
         }
         const response = await api.get(`/questions?course_id=${this.courseId}`, {
           headers: {
@@ -59,7 +60,7 @@ export default {
     async submitQuestion() {
       const token = localStorage.getItem('token');
       if (!token) {
-        this.showAuthPrompt = true;
+        router.push('/login');
       }
 
       try {
@@ -82,7 +83,7 @@ export default {
     async submitAnswer(questionId) {
       const token = localStorage.getItem('token');
       if (!token) {
-        this.showAuthPrompt = true;
+        router.push('/login');
       }
 
       try {
@@ -117,7 +118,7 @@ export default {
     async fetchAnswers(questionId) {
       const token = localStorage.getItem('token');
       if (!token) {
-        this.showAuthPrompt = true;
+        router.push('/login');
       }
 
       try {
@@ -139,7 +140,7 @@ export default {
 </script>
 
 <template>
-  <div class="my-8 container px-4">
+  <div class="my-16 container px-4">
     <h3 class="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">Ask a Question</h3>
 
     <form
@@ -206,7 +207,3 @@ export default {
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

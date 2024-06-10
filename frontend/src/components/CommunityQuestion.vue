@@ -1,6 +1,7 @@
 <script>
 import api from '@/api.js';
 import CommunityAnswerList from './CommunityAnswerList.vue';
+import router from "@/router.js";
 
 export default {
   components: {
@@ -12,7 +13,6 @@ export default {
       newAnswer: {
         content: ''
       },
-      showAuthPrompt: false,
     };
   },
   async created() {
@@ -22,7 +22,7 @@ export default {
     async fetchQuestion() {
       const token = localStorage.getItem('token');
       if (!token) {
-        this.showAuthPrompt = true;
+        router.push('/login');
       }
       try {
         const response = await api.get(`/questions/${this.$route.params.id}`,{
@@ -38,7 +38,7 @@ export default {
     async submitAnswer() {
       const token = localStorage.getItem('token');
       if (!token) {
-        this.showAuthPrompt = true;
+        router.push('/login');
       }
 
       try {

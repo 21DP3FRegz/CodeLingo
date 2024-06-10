@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import {h, onMounted, ref} from 'vue'
-import { FieldArray, useForm } from 'vee-validate'
+import { onMounted } from 'vue'
+import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
-import api from '@/api.js';
 
 import { Input } from '@/components/ui/input'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import { useToast } from '@/components/ui/toast/use-toast'
-
-const { toast } = useToast()
-const form = ref(null);
+import { toast } from '@/components/ui/toast'
+import api from '@/api.js'
+import router from '@/router.js'
 
 const profileFormSchema = toTypedSchema(z.object({
   username: z
@@ -24,34 +22,65 @@ const profileFormSchema = toTypedSchema(z.object({
       .max(30, {
         message: 'Username must not be longer than 30 characters.',
       }),
-  bio: z.string().max(160, { message: 'Bio must not be longer than 160 characters.' }).optional(),
+  bio: z.string().max(160, { message: 'Bio must not be longer than 160 characters.' })
 }))
 
-// not working =(
-const name = ref('')
-
-onMounted(async () => {
-  try {
-    const response = await api.get('/user', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
-    name.value = response.data.name;
-  } catch (error) {
-    console.error('Failed to fetch user data', error);
-  }
-})
-
-const { handleSubmit } = useForm({
+const { handleSubmit, resetForm, setValues } = useForm({
   validationSchema: profileFormSchema,
   initialValues: {
-    username: 'Feliks',
+    username: '',
     bio: '',
   },
 })
 
-const onSubmit = handleSubmit((values) => {
-  toast({
-    title: 'You submitted the following values:',
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
-  })
+onMounted(async () => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    }
+
+    const response = await api.get('/user', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    const userData = response.data
+    setValues({
+      username: userData.name,
+      bio: userData.bio,
+    })
+  } catch (error) {
+    toast({
+      title: 'Error fetching user data',
+      description: 'Unable to load user data. Please try again later.',
+    })
+  }
+})
+
+const onSubmit = handleSubmit(async (values) => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    }
+
+    await api.put('/user', values, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    toast({
+      title: 'Profile Updated',
+      description: 'Your profile has been successfully updated.',
+    })
+  } catch (error) {
+    toast({
+      title: 'Error updating profile',
+      description: 'Unable to update your profile. Please try again later.',
+    })
+  }
 })
 </script>
 
@@ -65,12 +94,12 @@ const onSubmit = handleSubmit((values) => {
     </p>
   </div>
   <Separator />
-  <form class="space-y-8" @submit="onSubmit">
-    <FormField v-slot="{ componentField }" name="username">
+  <form class="space-y-8" @submit.prevent="onSubmit">
+    <FormField v-slot="{ field }" name="username">
       <FormItem>
         <FormLabel>Username</FormLabel>
         <FormControl>
-          <Input type="text" placeholder="username" v-bind="componentField" />
+          <Input type="text" placeholder="Think of a cool username" v-bind="field" />
         </FormControl>
         <FormDescription>
           This is your public display name. It can be your real name or a pseudonym. You can only change this once every 30 days.
@@ -79,15 +108,12 @@ const onSubmit = handleSubmit((values) => {
       </FormItem>
     </FormField>
 
-    <FormField v-slot="{ componentField }" name="bio">
+    <FormField v-slot="{ field }" name="bio">
       <FormItem>
         <FormLabel>Bio</FormLabel>
         <FormControl>
-          <Textarea placeholder="Tell us a little bit about yourself" v-bind="componentField" />
+          <Textarea placeholder="Tell us a little bit about yourself" v-bind="field" />
         </FormControl>
-        <FormDescription>
-          You can <span>@mention</span> other users and organizations to link to them.
-        </FormDescription>
         <FormMessage />
       </FormItem>
     </FormField>
@@ -95,6 +121,14 @@ const onSubmit = handleSubmit((values) => {
     <div class="flex gap-2 justify-start">
       <Button type="submit">
         Update profile
+      </Button>
+
+      <Button
+          type="button"
+          variant="outline"
+          @click="resetForm"
+      >
+        Reset form
       </Button>
     </div>
   </form>

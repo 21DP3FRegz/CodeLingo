@@ -36,6 +36,8 @@ const router = createRouter({
             name: 'logout',
             beforeEnter(to, from, next) {
                 localStorage.removeItem('token');
+                localStorage.removeItem('course');
+                localStorage.removeItem('userCourseId');
                 next('/');
             }
         },

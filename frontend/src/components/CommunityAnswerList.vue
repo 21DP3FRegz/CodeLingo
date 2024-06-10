@@ -1,5 +1,6 @@
 <script>
 import api from '@/api.js';
+import router from "@/router.js";
 
 export default {
   props: {
@@ -21,7 +22,7 @@ export default {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
-          this.showAuthPrompt = true;
+          router.push('/login');
         }
         const response = await api.get('/answers', {
           params: {

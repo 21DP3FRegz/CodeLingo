@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -6,6 +7,28 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
+import router from "@/router.js";
+import api from '@/api.js';
+
+const isAdmin = ref(false);
+const token = localStorage.getItem('token');
+if (!token) {
+  router.push('/login');
+}
+
+onMounted(async () => {
+  try {
+    const response = await api.get(`/user`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    isAdmin.value = response.data.role === 'admin';
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    isAdmin.value = false;
+  }
+});
 </script>
 
 <template>
@@ -14,6 +37,14 @@ import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
         <NavigationMenu>
           <NavigationMenuList class="flex space-x-20">
             <NavigationMenuItem>
+              <RouterLink to="/">
+                <NavigationMenuLink :class="navigationMenuTriggerStyle()">
+                  Home
+                </NavigationMenuLink>
+              </RouterLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem v-if="isAdmin">
               <RouterLink to="/">
                 <NavigationMenuLink :class="navigationMenuTriggerStyle()">
                   Home
