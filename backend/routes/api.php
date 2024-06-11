@@ -33,3 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('questions', CommunityQuestionController::class)->except(['create', 'edit']);
     Route::resource('answers', CommunityAnswerController::class)->except(['create', 'edit']);
 });
+
+use App\Http\Controllers\LeaderboardController;
+
+Route::get('/leaderboard', [LeaderboardController::class, 'index']);

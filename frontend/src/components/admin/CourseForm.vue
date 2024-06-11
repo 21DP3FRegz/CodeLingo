@@ -87,6 +87,10 @@ const fetchCourse = async (id) => {
     })
   }
 }
+
+const goBack =  () => {
+  router.back();
+}
 </script>
 
 <template>
@@ -117,8 +121,11 @@ const fetchCourse = async (id) => {
       </FormItem>
     </FormField>
 
-    <Button type="submit">
+    <Button class="mr-2" type="submit">
       {{ isEditing ? 'Update' : 'Create' }}
+    </Button>
+    <Button type="button" variant="secondary" @click="goBack()">
+      Cancel
     </Button>
   </form>
 </template>
