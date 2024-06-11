@@ -9,6 +9,7 @@ import NotFound from "@/views/NotFound.vue";
 import ComingSoon from "@/views/ComingSoon.vue";
 import AdminView from "@/views/AdminView.vue";
 import EditCourse from "@/components/admin/EditCourse.vue";
+import Leaderboard from "@/views/LeaderboardView.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -58,7 +59,7 @@ const router = createRouter({
         {
             path: '/leaderboard',
             name: 'leaderboard',
-            component: ComingSoon,
+            component: Leaderboard,
             props: true,
         },
         {
