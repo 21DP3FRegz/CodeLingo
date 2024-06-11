@@ -45,9 +45,9 @@ onMounted(async () => {
             </NavigationMenuItem>
 
             <NavigationMenuItem v-if="isAdmin">
-              <RouterLink to="/">
+              <RouterLink to="/admin">
                 <NavigationMenuLink :class="navigationMenuTriggerStyle()">
-                  Home
+                  Admin Panel
                 </NavigationMenuLink>
               </RouterLink>
             </NavigationMenuItem>

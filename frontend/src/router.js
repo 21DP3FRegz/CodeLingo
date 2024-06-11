@@ -6,7 +6,9 @@ import Profile from '@/components/profile/Profile.vue'
 import Course from '@/components/Course.vue'
 import Lesson from '@/components/Lesson.vue'
 import NotFound from "@/views/NotFound.vue";
-import CommingSoon from "@/views/CommingSoon.vue";
+import ComingSoon from "@/views/ComingSoon.vue";
+import AdminView from "@/views/AdminView.vue";
+import EditCourse from "@/components/admin/EditCourse.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -56,7 +58,19 @@ const router = createRouter({
         {
             path: '/leaderboard',
             name: 'leaderboard',
-            component: CommingSoon,
+            component: ComingSoon,
+            props: true,
+        },
+        {
+            path: '/admin',
+            name: 'admin',
+            component: AdminView,
+            props: true,
+        },
+        {
+            path: '/admin/courses/edit/:id',
+            name: 'EditCourse',
+            component: EditCourse,
             props: true,
         },
         {

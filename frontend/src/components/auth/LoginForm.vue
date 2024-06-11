@@ -21,8 +21,8 @@ const router = useRouter();
 const { toast } = useToast()
 
 const formSchema = toTypedSchema(z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string(),
+  password: z.string(),
 }));
 
 const { handleSubmit, errors } = useForm({
