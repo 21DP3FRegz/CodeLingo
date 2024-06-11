@@ -25,7 +25,7 @@ const profileFormSchema = toTypedSchema(z.object({
   bio: z.string().max(160, { message: 'Bio must not be longer than 160 characters.' })
 }))
 
-const { handleSubmit, resetForm, setValues } = useForm({
+const { handleSubmit, setValues } = useForm({
   validationSchema: profileFormSchema,
   initialValues: {
     username: '',
@@ -34,6 +34,10 @@ const { handleSubmit, resetForm, setValues } = useForm({
 })
 
 onMounted(async () => {
+  await fetchUserData();
+})
+
+const fetchUserData = async () => {
   try {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -56,7 +60,7 @@ onMounted(async () => {
       description: 'Unable to load user data. Please try again later.',
     })
   }
-})
+};
 
 const onSubmit = handleSubmit(async (values) => {
   try {
@@ -126,7 +130,7 @@ const onSubmit = handleSubmit(async (values) => {
       <Button
           type="button"
           variant="outline"
-          @click="resetForm"
+          @click="fetchUserData"
       >
         Reset form
       </Button>

@@ -10,7 +10,7 @@ class LeaderboardController extends Controller
 {
     public function index(): JsonResponse
     {
-        $topUsers = User::orderBy('points', 'desc')->take(10)->get(['name', 'points']);
+        $topUsers = User::orderBy('points', 'desc')->take(5)->get(['name', 'points']);
         return response()->json($topUsers);
     }
 }

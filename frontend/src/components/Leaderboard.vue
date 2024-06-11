@@ -6,7 +6,6 @@ import Footer from "@/components/Footer.vue";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -55,7 +54,9 @@ onMounted(() => {
           <TableCell class="font-medium">
             {{ index + 1 }}
           </TableCell>
-          <TableCell>{{ user.name }}</TableCell>
+          <TableCell>
+            {{ user.name }}
+          </TableCell>
           <TableCell class="text-right">
             {{ user.points }}
           </TableCell>
